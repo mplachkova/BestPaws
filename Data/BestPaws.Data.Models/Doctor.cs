@@ -2,7 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
+
     using BestPaws.Data.Common.Models;
 
     public class Doctor : BaseDeletableModel<string>
@@ -21,8 +21,6 @@
 
         public string PictureLocation { get; set; }
 
-        [Required]
-        [MaxLength(100)]
         public string Specialization { get; set; }
 
         public string Biography { get; set; }

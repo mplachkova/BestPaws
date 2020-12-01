@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BestPaws.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20201128132943_SeedingAdded")]
-    partial class SeedingAdded
+    [Migration("20201130204240_AddPetFeature")]
+    partial class AddPetFeature
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -355,7 +355,6 @@ namespace BestPaws.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("ApplicationUserId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("CreatedOn")
@@ -838,9 +837,7 @@ namespace BestPaws.Data.Migrations
 
                     b.HasOne("BestPaws.Data.Models.ApplicationUser", "ApplicationUser")
                         .WithMany()
-                        .HasForeignKey("ApplicationUserId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .HasForeignKey("ApplicationUserId");
                 });
 
             modelBuilder.Entity("BestPaws.Data.Models.PetOwner", b =>

@@ -2,7 +2,6 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     using BestPaws.Data.Common.Models;
 
     public class Diagnosis : BaseDeletableModel<int>
@@ -12,12 +11,10 @@
             this.DiagnosesPets = new HashSet<PetsDiagnoses>();
         }
 
-        [Required]
         public string Name { get; set; }
 
         public string Comments { get; set; }
 
-        [Required]
         public Doctor Doctor { get; set; }
 
         public string DoctorId { get; set; }

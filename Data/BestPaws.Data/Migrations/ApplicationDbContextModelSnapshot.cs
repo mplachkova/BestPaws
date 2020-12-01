@@ -39,7 +39,6 @@ namespace BestPaws.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -69,7 +68,6 @@ namespace BestPaws.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -225,7 +223,6 @@ namespace BestPaws.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("DoctorId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("FromDate")
@@ -238,7 +235,6 @@ namespace BestPaws.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -277,9 +273,7 @@ namespace BestPaws.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Specialization")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(100)")
-                        .HasMaxLength(100);
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -310,9 +304,7 @@ namespace BestPaws.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(100)")
-                        .HasMaxLength(100);
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -346,14 +338,13 @@ namespace BestPaws.Data.Migrations
                     b.Property<byte>("Age")
                         .HasColumnType("tinyint");
 
-                    b.Property<int>("AnimalBreedId")
+                    b.Property<int?>("AnimalBreedId")
                         .HasColumnType("int");
 
                     b.Property<int>("AnimalTypeId")
                         .HasColumnType("int");
 
                     b.Property<string>("ApplicationUserId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("CreatedOn")
@@ -363,9 +354,7 @@ namespace BestPaws.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Gender")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(10)")
-                        .HasMaxLength(10);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -374,9 +363,7 @@ namespace BestPaws.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -418,7 +405,6 @@ namespace BestPaws.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("PhoneNumber")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -459,7 +445,6 @@ namespace BestPaws.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("DoctorId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<bool>("IsDeleted")
@@ -571,7 +556,6 @@ namespace BestPaws.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("DoctorId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("FromDate")
@@ -584,9 +568,7 @@ namespace BestPaws.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(100)")
-                        .HasMaxLength(100);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("PetId")
                         .HasColumnType("int");
@@ -627,9 +609,7 @@ namespace BestPaws.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(100)")
-                        .HasMaxLength(100);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Quantity")
                         .HasColumnType("decimal(18,2)");
@@ -637,7 +617,7 @@ namespace BestPaws.Data.Migrations
                     b.Property<int>("RefValueId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ReferenceValueId")
+                    b.Property<int?>("ReferenceValueId")
                         .HasColumnType("int");
 
                     b.Property<int>("TestTypeId")
@@ -674,9 +654,7 @@ namespace BestPaws.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("TypeName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(100)")
-                        .HasMaxLength(100);
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -793,9 +771,7 @@ namespace BestPaws.Data.Migrations
                 {
                     b.HasOne("BestPaws.Data.Models.Doctor", "Doctor")
                         .WithMany("Diagnoses")
-                        .HasForeignKey("DoctorId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .HasForeignKey("DoctorId");
                 });
 
             modelBuilder.Entity("BestPaws.Data.Models.Doctor", b =>
@@ -824,9 +800,7 @@ namespace BestPaws.Data.Migrations
                 {
                     b.HasOne("BestPaws.Data.Models.AnimalBreed", "AnimalBreed")
                         .WithMany()
-                        .HasForeignKey("AnimalBreedId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .HasForeignKey("AnimalBreedId");
 
                     b.HasOne("BestPaws.Data.Models.AnimalType", "AnimalType")
                         .WithMany()
@@ -836,9 +810,7 @@ namespace BestPaws.Data.Migrations
 
                     b.HasOne("BestPaws.Data.Models.ApplicationUser", "ApplicationUser")
                         .WithMany()
-                        .HasForeignKey("ApplicationUserId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .HasForeignKey("ApplicationUserId");
                 });
 
             modelBuilder.Entity("BestPaws.Data.Models.PetOwner", b =>
@@ -867,9 +839,7 @@ namespace BestPaws.Data.Migrations
                 {
                     b.HasOne("BestPaws.Data.Models.Doctor", "Doctor")
                         .WithMany("Prescriptions")
-                        .HasForeignKey("DoctorId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .HasForeignKey("DoctorId");
 
                     b.HasOne("BestPaws.Data.Models.Pet", "Pet")
                         .WithMany("Prescriptions")
@@ -891,9 +861,7 @@ namespace BestPaws.Data.Migrations
                 {
                     b.HasOne("BestPaws.Data.Models.Doctor", "Doctor")
                         .WithMany("Tests")
-                        .HasForeignKey("DoctorId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .HasForeignKey("DoctorId");
 
                     b.HasOne("BestPaws.Data.Models.Pet", "Pet")
                         .WithMany("Tests")
@@ -912,9 +880,7 @@ namespace BestPaws.Data.Migrations
                 {
                     b.HasOne("BestPaws.Data.Models.ReferenceValue", "ReferenceValue")
                         .WithMany()
-                        .HasForeignKey("ReferenceValueId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .HasForeignKey("ReferenceValueId");
 
                     b.HasOne("BestPaws.Data.Models.TestType", "TestType")
                         .WithMany("TestResults")

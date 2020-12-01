@@ -17,7 +17,6 @@
         [EmailAddress]
         public string EmailAddress { get; set; }
 
-        [Required]
         public string PhoneNumber { get; set; }
 
         public string ApplicationUserId { get; set; }

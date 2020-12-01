@@ -1,7 +1,6 @@
 ﻿namespace BestPaws.Data.Models
 {
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
 
     using BestPaws.Data.Common.Models;
 
@@ -14,31 +13,23 @@
             this.Tests = new HashSet<Test>();
         }
 
-        [Required]
-        [MaxLength(50)]
         public string Name { get; set; }
 
-        [Required]
         public byte Age { get; set; }
 
-        [Required]
-        [MaxLength(10)]
         public string Gender { get; set; }
 
-        [Required]
         public ApplicationUser ApplicationUser { get; set; }
 
         public string ApplicationUserId { get; set; }
 
-        [Required]
         public AnimalType AnimalType { get; set; }
 
         public int AnimalTypeId { get; set; }
 
-        [Required]
         public AnimalBreed AnimalBreed { get; set; }
 
-        public int AnimalBreedId { get; set; }
+        public int? AnimalBreedId { get; set; }
 
         public ICollection<PetsDiagnoses> PetsDiagnoses { get; set; }
 

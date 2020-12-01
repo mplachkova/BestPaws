@@ -6,7 +6,6 @@
 
     public class AnimalBreed : BaseDeletableModel<int>
     {
-        [Required]
         public string Name { get; set; }
     }
 }

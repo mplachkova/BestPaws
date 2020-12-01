@@ -1,0 +1,31 @@
+﻿@model BestPaws.Web.ViewModels.PetCenter.AddPetInputModel
+@{
+    this.ViewData["Title"] = "Add new pet";
+}
+
+
+<form method="post" class="col-6 offset-3">
+    <h2 >@this.ViewData["Title"]</h2>
+    <div asp-validation-summary="All"></div>
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Age"></label>
+        <input asp-for="Age" class="form-control" />
+        <span asp-validation-for="Age" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Gender"></label>
+        <input asp-for="Gender" class="form-control" />
+        <span asp-validation-for="Gender" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="AnimalTypeId"></label>
+        <select asp-for="AnimalTypeId" class="form-control" asp-items="Model.AnimalTypes"> </select>
+        <span asp-validation-for="AnimalTypeId" class="text-danger"></span>
+    </div>
+    <input type="submit" value="Submit" class="btn-block" />
+</form>

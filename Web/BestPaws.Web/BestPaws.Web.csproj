@@ -40,4 +40,10 @@
   <ItemGroup>
     <Folder Include="wwwroot\Pictures\" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="wwwroot\Pictures\iStock-916855450.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
 </Project>

@@ -8,6 +8,6 @@
 @foreach (var pet in this.Model.Pets)
 {
     <div>Name: @pet.Name</div>
-    <div>Age: @pet.Age</div>
-    <div>Gender: @pet.Gender</div>
 }
+
+<a asp-action="AddPet" class="btn btn-primary">Add new pet</a>
