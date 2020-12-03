@@ -30,6 +30,7 @@
                               new AnimalTypesSeeder(),
                               new AnimalBreedSeeder(),
                               new PetSeeder(),
+                              new ServiceSeeder(),
                           };
 
             foreach (var seeder in seeders)

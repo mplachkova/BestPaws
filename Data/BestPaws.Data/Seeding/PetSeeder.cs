@@ -3,6 +3,7 @@
     using System;
     using System.Linq;
     using System.Threading.Tasks;
+
     using BestPaws.Data.Models;
 
     public class PetSeeder : ISeeder
@@ -24,7 +25,7 @@
                 AnimalType = petAnimalType,
                 AnimalBreed = petBreed,
                 ApplicationUser = petOwner,
-                Gender = "male",
+                Gender = Models.Enums.Gender.Male,
                 Age = 11,
             };
 

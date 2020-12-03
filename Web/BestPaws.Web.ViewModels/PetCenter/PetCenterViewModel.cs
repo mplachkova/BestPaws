@@ -1,5 +1,4 @@
-﻿
-namespace BestPaws.Web.ViewModels
+﻿namespace BestPaws.Web.ViewModels
 {
     using AutoMapper;
     using BestPaws.Data.Models;

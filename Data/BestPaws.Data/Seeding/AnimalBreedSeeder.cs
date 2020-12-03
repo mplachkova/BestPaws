@@ -36,6 +36,7 @@
                 "American",
                 "Baldwin",
                 "Coronet",
+                "Unknown",
             };
 
             foreach (var breed in animalBreeds)

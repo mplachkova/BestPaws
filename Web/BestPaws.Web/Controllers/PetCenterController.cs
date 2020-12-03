@@ -1,27 +1,29 @@
 ﻿namespace BestPaws.Web.Controllers
 {
-    using BestPaws.Data.Common.Repositories;
-    using BestPaws.Data.Models;
+    using System.Threading.Tasks;
+
     using BestPaws.Services.Data;
     using BestPaws.Web.ViewModels;
     using BestPaws.Web.ViewModels.PetCenter;
     using Microsoft.AspNetCore.Mvc;
-    using System.Threading.Tasks;
 
     public class PetCenterController : BaseController
     {
         private readonly IPetCenterService service;
         private readonly IAnimalTypeService animalTypeSevice;
         private readonly IAddPetService addPetService;
+        private readonly IAnimalBreedService breedService;
 
         public PetCenterController(
             IPetCenterService petService,
             IAnimalTypeService animalTypeService,
-            IAddPetService addPetService)
+            IAddPetService addPetService,
+            IAnimalBreedService breedService)
         {
             this.service = petService;
             this.animalTypeSevice = animalTypeService;
             this.addPetService = addPetService;
+            this.breedService = breedService;
         }
 
         public IActionResult Index()
@@ -35,6 +37,7 @@
         {
             var model = new AddPetInputModel();
             model.AnimalTypes = this.animalTypeSevice.GetAllAnimalTypes();
+            model.AnimalBreeds = this.breedService.GetAllAnimalBreeds();
             return this.View(model);
         }
 
@@ -44,6 +47,7 @@
             if (!this.ModelState.IsValid)
             {
                 input.AnimalTypes = this.animalTypeSevice.GetAllAnimalTypes();
+                input.AnimalBreeds = this.breedService.GetAllAnimalBreeds();
                 return this.View(input);
             }
 

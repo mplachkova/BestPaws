@@ -67,6 +67,8 @@
             services.AddTransient<IPetCenterService, PetCenterService>();
             services.AddTransient<IAnimalTypeService, AnimalTypeService>();
             services.AddTransient<IAddPetService, AddPetService>();
+            services.AddTransient<IAnimalBreedService, AnimalBreedService>();
+            services.AddTransient<IServicesService, ServiceService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

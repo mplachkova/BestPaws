@@ -25,6 +25,7 @@
                     Text = x.Name,
                     Value = x.Id.ToString(),
                 })
+                .OrderBy(x => x.Text)
                 .ToList();
             return animalTypesSelection;
         }

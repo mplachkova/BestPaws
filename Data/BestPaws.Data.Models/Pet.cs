@@ -3,6 +3,7 @@
     using System.Collections.Generic;
 
     using BestPaws.Data.Common.Models;
+    using BestPaws.Data.Models.Enums;
 
     public class Pet : BaseDeletableModel<int>
     {
@@ -17,7 +18,7 @@
 
         public byte Age { get; set; }
 
-        public string Gender { get; set; }
+        public Gender Gender { get; set; }
 
         public ApplicationUser ApplicationUser { get; set; }
 

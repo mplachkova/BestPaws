@@ -20,6 +20,7 @@
             var pet = new Pet
             {
                 AnimalTypeId = input.AnimalTypeId,
+                AnimalBreedId = input.AnimalBreedId,
                 Age = input.Age,
                 Name = input.Name,
                 Gender = input.Gender,

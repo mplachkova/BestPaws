@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BestPaws.Data.Migrations
 {
-    public partial class AddPetFeature : Migration
+    public partial class GenderToEnum : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -17,7 +17,7 @@ namespace BestPaws.Data.Migrations
                     ModifiedOn = table.Column<DateTime>(nullable: true),
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeletedOn = table.Column<DateTime>(nullable: true),
-                    Name = table.Column<string>(nullable: false)
+                    Name = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -34,7 +34,7 @@ namespace BestPaws.Data.Migrations
                     ModifiedOn = table.Column<DateTime>(nullable: true),
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeletedOn = table.Column<DateTime>(nullable: true),
-                    Name = table.Column<string>(nullable: false)
+                    Name = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -101,7 +101,7 @@ namespace BestPaws.Data.Migrations
                     ModifiedOn = table.Column<DateTime>(nullable: true),
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeletedOn = table.Column<DateTime>(nullable: true),
-                    Name = table.Column<string>(maxLength: 100, nullable: false)
+                    Name = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -136,7 +136,7 @@ namespace BestPaws.Data.Migrations
                     ModifiedOn = table.Column<DateTime>(nullable: true),
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeletedOn = table.Column<DateTime>(nullable: true),
-                    TypeName = table.Column<string>(maxLength: 100, nullable: false)
+                    TypeName = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -286,7 +286,7 @@ namespace BestPaws.Data.Migrations
                     DeletedOn = table.Column<DateTime>(nullable: true),
                     ApplicationUserId = table.Column<string>(nullable: true),
                     PictureLocation = table.Column<string>(nullable: true),
-                    Specialization = table.Column<string>(maxLength: 100, nullable: false),
+                    Specialization = table.Column<string>(nullable: true),
                     Biography = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -311,7 +311,7 @@ namespace BestPaws.Data.Migrations
                     DeletedOn = table.Column<DateTime>(nullable: true),
                     Address = table.Column<string>(nullable: true),
                     EmailAddress = table.Column<string>(nullable: true),
-                    PhoneNumber = table.Column<string>(nullable: false),
+                    PhoneNumber = table.Column<string>(nullable: true),
                     ApplicationUserId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -335,12 +335,12 @@ namespace BestPaws.Data.Migrations
                     ModifiedOn = table.Column<DateTime>(nullable: true),
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeletedOn = table.Column<DateTime>(nullable: true),
-                    Name = table.Column<string>(maxLength: 50, nullable: false),
+                    Name = table.Column<string>(nullable: true),
                     Age = table.Column<byte>(nullable: false),
-                    Gender = table.Column<string>(maxLength: 10, nullable: false),
+                    Gender = table.Column<int>(nullable: false),
                     ApplicationUserId = table.Column<string>(nullable: true),
                     AnimalTypeId = table.Column<int>(nullable: false),
-                    AnimalBreedId = table.Column<int>(nullable: false)
+                    AnimalBreedId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -375,9 +375,9 @@ namespace BestPaws.Data.Migrations
                     ModifiedOn = table.Column<DateTime>(nullable: true),
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeletedOn = table.Column<DateTime>(nullable: true),
-                    Name = table.Column<string>(maxLength: 100, nullable: false),
+                    Name = table.Column<string>(nullable: true),
                     Quantity = table.Column<decimal>(nullable: false),
-                    ReferenceValueId = table.Column<int>(nullable: false),
+                    ReferenceValueId = table.Column<int>(nullable: true),
                     RefValueId = table.Column<int>(nullable: false),
                     TestTypeId = table.Column<int>(nullable: false)
                 },
@@ -408,9 +408,9 @@ namespace BestPaws.Data.Migrations
                     ModifiedOn = table.Column<DateTime>(nullable: true),
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeletedOn = table.Column<DateTime>(nullable: true),
-                    Name = table.Column<string>(nullable: false),
+                    Name = table.Column<string>(nullable: true),
                     Comments = table.Column<string>(nullable: true),
-                    DoctorId = table.Column<string>(nullable: false),
+                    DoctorId = table.Column<string>(nullable: true),
                     FromDate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
@@ -435,7 +435,7 @@ namespace BestPaws.Data.Migrations
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeletedOn = table.Column<DateTime>(nullable: true),
                     PetId = table.Column<int>(nullable: false),
-                    DoctorId = table.Column<string>(nullable: false)
+                    DoctorId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -464,10 +464,10 @@ namespace BestPaws.Data.Migrations
                     ModifiedOn = table.Column<DateTime>(nullable: true),
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeletedOn = table.Column<DateTime>(nullable: true),
-                    Name = table.Column<string>(maxLength: 100, nullable: false),
+                    Name = table.Column<string>(nullable: true),
                     PetId = table.Column<int>(nullable: false),
                     FromDate = table.Column<DateTime>(nullable: false),
-                    DoctorId = table.Column<string>(nullable: false),
+                    DoctorId = table.Column<string>(nullable: true),
                     Comments = table.Column<string>(nullable: true),
                     TestTypeId = table.Column<int>(nullable: false)
                 },

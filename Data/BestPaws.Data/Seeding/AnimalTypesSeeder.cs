@@ -4,8 +4,8 @@
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
-    using Microsoft.EntityFrameworkCore.Internal;
     using BestPaws.Data.Models;
+    using Microsoft.EntityFrameworkCore.Internal;
 
     public class AnimalTypesSeeder : ISeeder
     {

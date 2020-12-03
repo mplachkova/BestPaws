@@ -5,7 +5,7 @@
 
 
 <form method="post" class="col-6 offset-3">
-    <h2 >@this.ViewData["Title"]</h2>
+    <h3 class="text-info">@this.ViewData["Title"]</h3>
     <div asp-validation-summary="All"></div>
     <div class="form-group">
         <label asp-for="Name"></label>
@@ -19,7 +19,7 @@
     </div>
     <div class="form-group">
         <label asp-for="Gender"></label>
-        <input asp-for="Gender" class="form-control" />
+        <select asp-for="Gender" class="form-control" asp-items="Html.GetEnumSelectList<BestPaws.Data.Models.Enums.Gender>()"> </select>
         <span asp-validation-for="Gender" class="text-danger"></span>
     </div>
     <div class="form-group">
@@ -27,5 +27,10 @@
         <select asp-for="AnimalTypeId" class="form-control" asp-items="Model.AnimalTypes"> </select>
         <span asp-validation-for="AnimalTypeId" class="text-danger"></span>
     </div>
-    <input type="submit" value="Submit" class="btn-block" />
+    <div class="form-group">
+        <label asp-for="AnimalBreedId"></label>
+        <select asp-for="AnimalBreedId" class="form-control" asp-items="Model.AnimalBreeds"> </select>
+        <span asp-validation-for="AnimalBreedId" class="text-danger"></span>
+    </div>
+    <input type="submit" value="Submit" class="btn btn-outline-info" />
 </form>
