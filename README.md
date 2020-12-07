@@ -1,6 +1,3 @@
-<!DOCTYPE html>
-<html>
-<body>
 <h2>BestPaws</h2>
 This is my course project for ASP.NET Core module at SoftUni (October-December 2020).
 
@@ -22,5 +19,4 @@ This is my course project for ASP.NET Core module at SoftUni (October-December 2
  <h3>Project template:</h3>
  <p><a href="https://github.com/NikolayIT/ASP.NET-Core-Template" target="_blank" rel="noopener noreferrer">ASP.NET Core Template</a></p>
  <p><a href="https://github.com/bootstrapbay/lazy-kit" target="_blank" rel="noopener noreferrer"> Lazy Kit Bootstrap template</a></p>
-</body>
-</html>
+ 
