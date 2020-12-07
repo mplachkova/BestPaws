@@ -17,5 +17,5 @@ This is my course project for ASP.NET Core module at SoftUni (October-December 2
     </ul>
 </p>
  <h3>Project template:</h3>
- <p><a href="https://github.com/NikolayIT/ASP.NET-Core-Template">ASP.NET Core Template</a></p>
- <p><a href="https://github.com/bootstrapbay/lazy-kit"> Lazy Kit Bootstrap template</a></p>
+ <p><a href="https://github.com/NikolayIT/ASP.NET-Core-Template" target="_blank" rel="noopener noreferrer">ASP.NET Core Template</a></p>
+ <p><a href="https://github.com/bootstrapbay/lazy-kit" target="_blank" rel="noopener noreferrer"> Lazy Kit Bootstrap template</a></p>
