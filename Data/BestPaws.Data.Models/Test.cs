@@ -1,12 +1,19 @@
 ﻿namespace BestPaws.Data.Models
 {
     using System;
+    using System.Collections.Generic;
 
     using BestPaws.Data.Common.Models;
 
     public class Test : BaseDeletableModel<int>
     {
-        public string Name { get; set; }
+        public TestResult TestResult { get; set; }
+
+        public int TestResultId { get; set; }
+
+        public TestType TestType { get; set; }
+
+        public int TestTypeId { get; set; }
 
         public Pet Pet { get; set; }
 
@@ -19,9 +26,5 @@
         public string DoctorId { get; set; }
 
         public string Comments { get; set; }
-
-        public TestType TestType { get; set; }
-
-        public int TestTypeId { get; set; }
     }
 }

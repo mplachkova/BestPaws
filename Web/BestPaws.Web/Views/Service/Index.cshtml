@@ -2,23 +2,25 @@
 @{
     this.ViewData["Title"] = "Our services";
 }
-<h2>Our services</h2>
-<div class="row">
-    @foreach (var service in this.Model.Services)
-    {
-        <div class="col-form-label-sm">
-            <div class="card">
-                <div class="card-header">
-                    <img class="card-img" src="assets/img/dog-1.jpg" alt="Service">
-                </div>
-                <div class="card-body">
-                    <h4 class="card-title mt-0">@service.Name</h4>
-                    <p class="card-text">@service.Description </p>
-                </div>
-                <div class="card-footer">
-                    <a href="#a" class="btn btn-primary">Read More</a>
+<h2 class="text-info">Our services</h2>
+<div class="d-flex flex-fill">
+    <div class="row">
+        @foreach (var service in this.Model.Services)
+        {
+            <div class="col-md-6">
+                <div class="card m-2">
+                    <div class="card-header">
+                        <img class="card-img" src="assets/img/dog-1.jpg" alt="Service">
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title mt-0">@service.Name</h4>
+                        <p class="card-text">@service.Description </p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#a" class="btn btn-outline-info">Read More</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    }
+        }
+    </div>
 </div>

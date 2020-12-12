@@ -1,0 +1,114 @@
+{
+    {
+        "Name": "Albumin",
+        "Units": "g/l",
+        "MinValue ": 25,
+        "MaxValue": 44,
+        "AnimalType": "Dog"
+        "AnimalTypeId": 2
+    },
+    {
+        "Name": "Globulin",
+        "Units": "g/l",
+        "MinValue ": 23,
+        "MaxValue": 52,
+        "AnimalType": "Dog"
+        "AnimalTypeId": 2
+    },
+    {
+        "Name": "ALT",
+        "Units": "u/l",
+        "MinValue ": 10,
+        "MaxValue": 118,
+        "AnimalType": "Dog"
+        "AnimalTypeId": 2
+},
+{
+    "Name": "AST",
+    "Units": "u/l",
+    "MinValue ": 8.9,
+    "MaxValue": 48.5,
+    "AnimalType": "Dog"
+    "AnimalTypeId": 2
+},
+{
+    "Name": "Urea",
+    "Units": "mmol/l",
+    "MinValue ": 2.5,
+    "MaxValue": 8.9,
+    "AnimalType": "Dog"
+    "AnimalTypeId": 2
+},
+{
+    "Name": "Creatinine",
+    "Units": "mmol/l",
+    "MinValue ": 27,
+    "MaxValue": 124,
+    "AnimalType": "Dog"
+    "AnimalTypeId": 2
+},
+{
+    "Name": "Glucose",
+    "Units": "mmol/l",
+    "MinValue ": 3.89,
+    "MaxValue": 7.95,
+    "AnimalType": "Dog"
+    "AnimalTypeId": 2
+},
+{
+    "Name": "Albumin",
+    "Units": "g/l",
+    "MinValue ": 27,
+    "MaxValue": 45,
+    "AnimalType": "Cat"
+    "AnimalTypeId": 1
+},
+{
+    "Name": "Globulin",
+    "Units": "g/l",
+    "MinValue ": 15,
+    "MaxValue": 57,
+    "AnimalType": "Cat"
+    "AnimalTypeId": 1
+},
+{
+    "Name": "ALT",
+    "Units": "u/l",
+    "MinValue ": 20,
+    "MaxValue": 100,
+    "AnimalType": "Cat"
+    "AnimalTypeId": 1
+},
+{
+    "Name": "AST",
+    "Units": "u/l",
+    "MinValue ": 12,
+    "MaxValue": 43,
+    "AnimalType": "Cat"
+    "AnimalTypeId": 1
+},
+{
+    "Name": "Urea",
+    "Units": "mmol/l",
+    "MinValue ": 3.6,
+    "MaxValue": 10.7,
+    "AnimalType": "Cat"
+    "AnimalTypeId": 1
+},
+{
+    "Name": "Creatinine",
+    "Units": "mmol/l",
+    "MinValue ": 27,
+    "MaxValue": 141,
+    "AnimalType": "Cat"
+    "AnimalTypeId": 1
+},
+{
+    "Name": "Glucose",
+    "Units": "mmol/l",
+    "MinValue ": 3.9,
+    "MaxValue": 8.3,
+    "AnimalType": "Cat"
+    "AnimalTypeId": 1
+},
+}

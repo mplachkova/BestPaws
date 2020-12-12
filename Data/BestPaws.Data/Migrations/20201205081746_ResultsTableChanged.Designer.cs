@@ -4,14 +4,16 @@ using BestPaws.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BestPaws.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201205081746_ResultsTableChanged")]
+    partial class ResultsTableChanged
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -431,42 +433,6 @@ namespace BestPaws.Data.Migrations
                     b.ToTable("PetsDiagnoses");
                 });
 
-            modelBuilder.Entity("BestPaws.Data.Models.PetsTreatments", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("PetId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TreatmentId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IsDeleted");
-
-                    b.HasIndex("PetId");
-
-                    b.HasIndex("TreatmentId");
-
-                    b.ToTable("PetsTreatments");
-                });
-
             modelBuilder.Entity("BestPaws.Data.Models.Prescription", b =>
                 {
                     b.Property<int>("Id")
@@ -532,9 +498,6 @@ namespace BestPaws.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Units")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -638,10 +601,10 @@ namespace BestPaws.Data.Migrations
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("PetId")
-                        .HasColumnType("int");
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("TestResultId")
+                    b.Property<int>("PetId")
                         .HasColumnType("int");
 
                     b.Property<int>("TestTypeId")
@@ -655,14 +618,12 @@ namespace BestPaws.Data.Migrations
 
                     b.HasIndex("PetId");
 
-                    b.HasIndex("TestResultId");
-
                     b.HasIndex("TestTypeId");
 
                     b.ToTable("Tests");
                 });
 
-            modelBuilder.Entity("BestPaws.Data.Models.TestIndicator", b =>
+            modelBuilder.Entity("BestPaws.Data.Models.TestResult", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -693,7 +654,7 @@ namespace BestPaws.Data.Migrations
                     b.Property<int?>("ReferenceValueId")
                         .HasColumnType("int");
 
-                    b.Property<int>("TestResultId")
+                    b.Property<int>("TestTypeId")
                         .HasColumnType("int");
 
                     b.Property<string>("Units")
@@ -705,35 +666,9 @@ namespace BestPaws.Data.Migrations
 
                     b.HasIndex("ReferenceValueId");
 
-                    b.HasIndex("TestResultId");
+                    b.HasIndex("TestTypeId");
 
-                    b.ToTable("TestIndicators");
-                });
-
-            modelBuilder.Entity("BestPaws.Data.Models.TestResult", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IsDeleted");
-
-                    b.ToTable("TestResult");
+                    b.ToTable("TestResults");
                 });
 
             modelBuilder.Entity("BestPaws.Data.Models.TestType", b =>
@@ -755,7 +690,7 @@ namespace BestPaws.Data.Migrations
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("TypeName")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -763,35 +698,6 @@ namespace BestPaws.Data.Migrations
                     b.HasIndex("IsDeleted");
 
                     b.ToTable("TestType");
-                });
-
-            modelBuilder.Entity("BestPaws.Data.Models.Treatment", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IsDeleted");
-
-                    b.ToTable("Treatments");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -966,21 +872,6 @@ namespace BestPaws.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("BestPaws.Data.Models.PetsTreatments", b =>
-                {
-                    b.HasOne("BestPaws.Data.Models.Pet", "Pet")
-                        .WithMany("PetsTreatments")
-                        .HasForeignKey("PetId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("BestPaws.Data.Models.Treatment", "Treatment")
-                        .WithMany("PetsTreatments")
-                        .HasForeignKey("TreatmentId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("BestPaws.Data.Models.Prescription", b =>
                 {
                     b.HasOne("BestPaws.Data.Models.Doctor", "Doctor")
@@ -1015,12 +906,6 @@ namespace BestPaws.Data.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("BestPaws.Data.Models.TestResult", "TestResult")
-                        .WithMany()
-                        .HasForeignKey("TestResultId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.HasOne("BestPaws.Data.Models.TestType", "TestType")
                         .WithMany()
                         .HasForeignKey("TestTypeId")
@@ -1028,15 +913,15 @@ namespace BestPaws.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("BestPaws.Data.Models.TestIndicator", b =>
+            modelBuilder.Entity("BestPaws.Data.Models.TestResult", b =>
                 {
                     b.HasOne("BestPaws.Data.Models.ReferenceValue", "ReferenceValue")
                         .WithMany()
                         .HasForeignKey("ReferenceValueId");
 
-                    b.HasOne("BestPaws.Data.Models.TestResult", "TestResult")
-                        .WithMany("TestIndicators")
-                        .HasForeignKey("TestResultId")
+                    b.HasOne("BestPaws.Data.Models.TestType", "TestType")
+                        .WithMany("TestResults")
+                        .HasForeignKey("TestTypeId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });

@@ -2,8 +2,10 @@
 {
     using System.Collections.Generic;
 
+    using BestPaws.Web.ViewModels.Services;
+
     public interface IServicesService
     {
-        IEnumerable<T> GetAll<T>();
+        IEnumerable<ServiceViewModel> GetAll();
     }
 }

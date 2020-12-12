@@ -31,6 +31,10 @@
                               new AnimalBreedSeeder(),
                               new PetSeeder(),
                               new ServiceSeeder(),
+                              new ReferenceValueSeeder(),
+                              new MedicamentSeeder(),
+                              new PetDiagonsisSeeder(),
+                              new TreatmentSeeder(),
                           };
 
             foreach (var seeder in seeders)

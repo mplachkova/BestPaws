@@ -51,9 +51,13 @@
 
         public DbSet<ReferenceValue> ReferenceValues { get; set; }
 
-        public DbSet<TestResult> TestResults { get; set; }
+        public DbSet<TestIndicator> TestIndicators { get; set; }
 
         public DbSet<Service> Services { get; set; }
+
+        public DbSet<Treatment> Treatments { get; set; }
+
+        public DbSet<PetsTreatments> PetsTreatments { get; set; }
 
         public override int SaveChanges() => this.SaveChanges(true);
 

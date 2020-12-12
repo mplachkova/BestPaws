@@ -24,6 +24,7 @@
         [DisplayName("AnimalType")]
         public int AnimalTypeId { get; set; }
 
+        [Required]
         [DisplayName("AnimalBreed")]
         public int AnimalBreedId { get; set; }
 

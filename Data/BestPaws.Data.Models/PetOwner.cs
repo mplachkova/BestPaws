@@ -14,7 +14,6 @@
 
         public string Address { get; set; }
 
-        [EmailAddress]
         public string EmailAddress { get; set; }
 
         public string PhoneNumber { get; set; }

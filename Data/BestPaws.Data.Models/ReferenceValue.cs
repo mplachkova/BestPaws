@@ -6,6 +6,8 @@
     {
         public string Name { get; set; }
 
+        public string Units { get; set; }
+
         public decimal MinValue { get; set; }
 
         public decimal MaxValue { get; set; }

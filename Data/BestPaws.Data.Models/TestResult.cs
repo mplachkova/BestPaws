@@ -1,20 +1,16 @@
 ﻿namespace BestPaws.Data.Models
 {
+    using System.Collections.Generic;
 
     using BestPaws.Data.Common.Models;
 
     public class TestResult : BaseDeletableModel<int>
     {
-        public string Name { get; set; }
+        public TestResult()
+        {
+            this.TestIndicators = new HashSet<TestIndicator>();
+        }
 
-        public decimal Quantity { get; set; }
-
-        public ReferenceValue ReferenceValue { get; set; }
-
-        public int RefValueId { get; set; }
-
-        public TestType TestType { get; set; }
-
-        public int TestTypeId { get; set; }
+        public ICollection<TestIndicator> TestIndicators { get; set; }
     }
 }
