@@ -1,5 +1,5 @@
 {
-    {
+    "ReferenceValue" : {
         "Name": "Albumin",
         "Units": "g/l",
         "MinValue ": 25,

@@ -54,5 +54,7 @@
             await this.addPetService.CreateAsync(input);
             return this.Redirect("/PetCenter");
         }
+
+        // TODO: Registered pet is automatically assigned to the current doctor
     }
 }
