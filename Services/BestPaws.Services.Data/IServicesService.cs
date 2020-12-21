@@ -17,8 +17,8 @@
 
         Task DeleteAsync(int id);
 
-        ServiceViewModel GetServiceById(int id);
+        ServiceInputModel GetServiceById(int id);
 
-        Task EditAsync(int id, ServiceViewModel model);
+        Task EditAsync(int id, ServiceInputModel model);
     }
 }

@@ -48,6 +48,9 @@
     <Content Update="wwwroot\img\logo.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Update="wwwroot\img\mainLogo_tr.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Update="wwwroot\Pictures\iStock-916855450.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -2,32 +2,39 @@
 @{
     this.ViewData["Title"] = "Manage Services";
 }
-<div class="row">
+<div class="container m-5">
+    @if (TempData.ContainsKey("Message"))
+    {
+        <div class="container alert alert-secondary alert-dismissible fade show text-center col-md-7 p-3 mb-5" role="alert">
+            @this.TempData["Message"]
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
     @foreach (var service in this.Model.Services)
     {
-        <div class="col-md-6">
-            <div class="card m-2">
-                <div class="card-header">
-                    <img class="card-img" src="assets/img/dog-1.jpg" alt="Service">
-                </div>
-                <div class="card-body">
-                    <h4 class="card-title mt-0">@service.Name</h4>
-                    <p class="card-text">@service.Description</p>
-                </div>
-                <div class="card-footer">
-                    @if (service.IsDeleted)
-                    {
-                        <a class="btn btn-outline-light" asp-controller="Service" asp-action="Delete" asp-route-id=@service.Id>Delete</a>
-                        <a class="btn btn-outline-info" asp-controller="Service" asp-action="Restore" asp-route-id=@service.Id>Restore</a>
-                    }
-                    else if (!service.IsDeleted)
-                    {
-                        <a class="btn btn-outline-danger" asp-controller="Service" asp-action="Delete" asp-route-id=@service.Id>Delete</a>
-                        <a class="btn btn-outline-light" asp-controller="Service" asp-action="Restore" asp-route-id=@service.Id>Restore</a>
-                    }
-                    <a class="btn btn-outline-success" asp-controller="Service" asp-action="Edit" asp-route-id=@service.Id>Edit</a>
-                </div>
-            </div>
+        <div class="col-md-8 offset-2">
+            <table class="table table-striped">
+                <tbody>
+                    <tr>
+                        <td>@service.Name</td>
+                        <td class="text-right">
+                            @if (service.IsDeleted)
+                            {
+                                <a class="disabled btn btn-danger" asp-controller="Service" asp-action="Delete" asp-route-id=@service.Id>Delete</a>
+                                <a class="btn btn-info" asp-controller="Service" asp-action="Restore" asp-route-id=@service.Id>Restore</a>
+                            }
+                            else if (!service.IsDeleted)
+                            {
+                                <a class="btn btn-danger" asp-controller="Service" asp-action="Delete" asp-route-id=@service.Id>Delete</a>
+                                <a class="disabled btn btn-info" asp-controller="Service" asp-action="Restore" asp-route-id=@service.Id>Restore</a>
+                            }
+                            <a class="btn btn-success" asp-controller="Service" asp-action="Edit" asp-route-id=@service.Id>Edit</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     }
 </div>

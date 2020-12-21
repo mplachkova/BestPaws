@@ -44,14 +44,14 @@
             await this.repository.SaveChangesAsync();
         }
 
-        public ServiceViewModel GetServiceById(int id)
+        public ServiceInputModel GetServiceById(int id)
         {
-            return this.repository.All().To<ServiceViewModel>().FirstOrDefault(x => x.Id == id);
+            return this.repository.AllWithDeleted().To<ServiceInputModel>().FirstOrDefault(x => x.Id == id);
         }
 
-        public async Task EditAsync(int id, ServiceViewModel model)
+        public async Task EditAsync(int id, ServiceInputModel model)
         {
-            var editedService = this.repository.All().FirstOrDefault(x => x.Id == id);
+            var editedService = this.repository.AllWithDeleted().FirstOrDefault(x => x.Id == id);
             editedService.Name = model.Name;
             editedService.Description = model.Description;
             await this.repository.SaveChangesAsync();

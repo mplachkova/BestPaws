@@ -39,6 +39,7 @@
             }
 
             await this.service.CreateAsync(input);
+            this.TempData["Message"] = "Service was added successfully";
             return this.RedirectToAction(nameof(this.Index));
         }
 
@@ -53,6 +54,7 @@
         public async Task<IActionResult> Delete(int id)
         {
             await this.service.DeleteAsync(id);
+            this.TempData["Message"] = "Service was deleted successfully";
             return this.RedirectToAction(nameof(this.ManageServices));
         }
 
@@ -63,16 +65,23 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, ServiceViewModel input)
+        public async Task<IActionResult> Edit(int id, ServiceInputModel input)
         {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(input);
+            }
+
             await this.service.EditAsync(id, input);
             var viewModel = this.service.GetServiceById(id);
+            this.TempData["Message"] = "Service was edited successfully";
             return this.RedirectToAction(nameof(this.ManageServices));
         }
 
         public async Task<IActionResult> Restore(int id)
         {
             await this.service.RestoreAsync(id);
+            this.TempData["Message"] = "Service was restored successfully";
             return this.RedirectToAction(nameof(this.ManageServices));
         }
     }
