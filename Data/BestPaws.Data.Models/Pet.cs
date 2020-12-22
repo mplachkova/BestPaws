@@ -21,9 +21,13 @@
 
         public Gender Gender { get; set; }
 
-        public ApplicationUser ApplicationUser { get; set; }
+        public PetOwner PetOwner { get; set; }
 
-        public string ApplicationUserId { get; set; }
+        public string PetOwnerId { get; set; }
+
+        public Doctor Doctor { get; set; }
+
+        public string DoctorId { get; set; }
 
         public AnimalType AnimalType { get; set; }
 

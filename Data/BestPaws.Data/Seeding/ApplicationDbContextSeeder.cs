@@ -35,6 +35,9 @@
                               new MedicamentSeeder(),
                               new PetDiagonsisSeeder(),
                               new TreatmentSeeder(),
+                              new UserSeeder(),
+                              new PetOwnerSeeder(),
+                              new DoctorSeeder(),
                           };
 
             foreach (var seeder in seeders)

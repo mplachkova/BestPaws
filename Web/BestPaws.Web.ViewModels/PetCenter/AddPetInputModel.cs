@@ -28,6 +28,20 @@
         [DisplayName("AnimalBreed")]
         public int AnimalBreedId { get; set; }
 
+        [Required]
+        [DisplayName("Doctor")]
+        public string DoctorId { get; set; }
+
+        [Required]
+        [EmailAddress]
+        public string EmailAddress { get; set; }
+
+        [Required]
+        [StringLength(10)]
+        public string PhoneNumber { get; set; }
+
+        public IEnumerable<SelectListItem> Doctors { get; set; }
+
         public IEnumerable<SelectListItem> AnimalTypes { get; set; }
 
         public IEnumerable<SelectListItem> AnimalBreeds { get; set; }

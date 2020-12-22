@@ -1,12 +1,9 @@
 ﻿@model BestPaws.Web.ViewModels.PetCenter.AddPetInputModel
-@{
-    this.ViewData["Title"] = "Add new pet";
-}
 
 
 <form method="post" class="col-6 offset-3">
-    <h3 class="text-info">@this.ViewData["Title"]</h3>
     <div asp-validation-summary="All"></div>
+    <h3 class="text-info mt-5">Pet Info</h3>
     <div class="form-group">
         <label asp-for="Name"></label>
         <input asp-for="Name" class="form-control" />
@@ -28,9 +25,26 @@
         <span asp-validation-for="AnimalTypeId" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="AnimalBreedId"></label>
+        <label asp-for="AnimalTypeId"></label>
         <select asp-for="AnimalBreedId" class="form-control" asp-items="Model.AnimalBreeds"> </select>
         <span asp-validation-for="AnimalBreedId" class="text-danger"></span>
+    </div>
+    <h3 class="text-info mt-5">Pet Owner Info</h3>
+    <div class="form-group">
+        <label asp-for="EmailAddress"></label>
+        <input asp-for="EmailAddress" class="form-control" />
+        <span asp-validation-for="EmailAddress" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PhoneNumber"></label>
+        <input asp-for="PhoneNumber" class="form-control" />
+        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+    </div>
+    <h3 class="text-info mt-5">Doctor Info</h3>
+    <div class="form-group">
+        <label asp-for="DoctorId"></label>
+        <select asp-for="DoctorId" class="form-control" asp-items="Model.Doctors"> </select>
+        <span asp-validation-for="DoctorId" class="text-danger"></span>
     </div>
     <input type="submit" value="Submit" class="btn btn-outline-info" />
 </form>

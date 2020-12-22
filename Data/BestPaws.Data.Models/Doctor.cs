@@ -13,7 +13,14 @@
             this.Diagnoses = new HashSet<Diagnosis>();
             this.Prescriptions = new HashSet<Prescription>();
             this.Tests = new HashSet<Test>();
+            this.Pets = new HashSet<Pet>();
         }
+
+        public string FirstName { get; set; }
+
+        public string MiddleName { get; set; }
+
+        public string LastName { get; set; }
 
         public string ApplicationUserId { get; set; }
 
@@ -30,5 +37,7 @@
         public ICollection<Diagnosis> Diagnoses { get; set; }
 
         public ICollection<Test> Tests { get; set; }
+
+        public ICollection<Pet> Pets { get; set; }
     }
 }

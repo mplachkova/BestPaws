@@ -39,7 +39,6 @@
             }
 
             await this.service.CreateAsync(input);
-
             this.TempData["Message"] = "Service was added successfully";
             return this.RedirectToAction(nameof(this.Index));
         }

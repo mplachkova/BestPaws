@@ -5,56 +5,60 @@
     using BestPaws.Services.Data;
     using BestPaws.Web.ViewModels;
     using BestPaws.Web.ViewModels.PetCenter;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
     public class PetCenterController : BaseController
     {
-        private readonly IPetCenterService service;
+        private readonly IPetCenterService petService;
         private readonly IAnimalTypeService animalTypeSevice;
-        private readonly IAddPetService addPetService;
         private readonly IAnimalBreedService breedService;
+        private readonly IDoctorService doctorService;
 
         public PetCenterController(
             IPetCenterService petService,
             IAnimalTypeService animalTypeService,
-            IAddPetService addPetService,
-            IAnimalBreedService breedService)
+            IAnimalBreedService breedService,
+            IDoctorService doctorService)
         {
-            this.service = petService;
+            this.petService = petService;
             this.animalTypeSevice = animalTypeService;
-            this.addPetService = addPetService;
             this.breedService = breedService;
+            this.doctorService = doctorService;
         }
 
+        [Authorize]
         public IActionResult Index()
         {
-            var pets = this.service.GetAll<PetCenterViewModel>();
+            var pets = this.petService.GetAll<PetCenterViewModel>();
             var model = new PetCenterListViewModel { Pets = pets };
             return this.View(model);
         }
 
-        public IActionResult AddPet()
+        [Authorize(Roles = "Doctor, Administrator")]
+        public IActionResult RegisterPet()
         {
             var model = new AddPetInputModel();
             model.AnimalTypes = this.animalTypeSevice.GetAllAnimalTypes();
             model.AnimalBreeds = this.breedService.GetAllAnimalBreeds();
+            model.Doctors = this.doctorService.GetAllDoctors();
             return this.View(model);
         }
 
+        [Authorize(Roles = "Doctor, Administrator")]
         [Microsoft.AspNetCore.Mvc.HttpPost]
-        public async Task<IActionResult> AddPet(AddPetInputModel input)
+        public async Task<IActionResult> RegisterPet(AddPetInputModel input)
         {
             if (!this.ModelState.IsValid)
             {
                 input.AnimalTypes = this.animalTypeSevice.GetAllAnimalTypes();
                 input.AnimalBreeds = this.breedService.GetAllAnimalBreeds();
+                input.Doctors = this.doctorService.GetAllDoctors();
                 return this.View(input);
             }
 
-            await this.addPetService.CreateAsync(input);
-            return this.Redirect("/PetCenter");
+            await this.petService.CreateAsync(input);
+            return this.RedirectToAction(nameof(this.Index));
         }
-
-        // TODO: Registered pet is automatically assigned to the current doctor
     }
 }

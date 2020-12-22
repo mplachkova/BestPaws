@@ -10,4 +10,7 @@
     <div>Name: @pet.Name</div>
 }
 
-<a asp-action="AddPet" class="btn btn-outline-info">Register a new pet</a>
+@if (User.IsInRole("Doctor") || User.IsInRole("Administrator"))
+{
+    <a asp-action="RegisterPet" class="btn btn-outline-info">Register a new pet</a>
+}
