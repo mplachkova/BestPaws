@@ -364,6 +364,7 @@ FodyWeavers.xsd
 # Custom ignores
 **/wwwroot/lib/
 /Data/BestPaws.Data/appsettings.json
+/Web/BestPaws.Web/appsettings.json
 appsettings.Production.json
 appsettings.Development.json
 appsettings.Staging.json
