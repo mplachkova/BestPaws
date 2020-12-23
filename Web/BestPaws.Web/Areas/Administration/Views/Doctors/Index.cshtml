@@ -1,0 +1,67 @@
+﻿@model BestPaws.Web.ViewModels.Doctor.DoctorListViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                FirstName
+            </th>
+            <th>
+                MiddleName
+            </th>
+            <th>
+                LastName
+            </th>
+            <th>
+                Id
+            </th>
+            <th>
+                Specialization
+            </th>
+            <th>
+                Biography
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Doctors)
+        {
+            <tr>
+                <td>
+                    @item.FirstName
+                </td>
+                <td>
+                    @item.MiddleName
+                </td>
+                <td>
+                    @item.LastName
+                </td>
+                <td>
+                    @item.Id
+                </td>
+                <td>
+                    @item.Specialization
+                </td>
+                <td>
+                    @item.Biography
+                </td>
+                <td>
+                    <a asp-area="Administration" asp-controller="Doctors" asp-action="Edit" asp-route-id = "@item.Id">Edit</a>|
+                    <a asp-area="Administration" asp-controller="Doctors" asp-action="Details" asp-route-id = "@item.Id">Details</a> |
+                    <a asp-area="Administration" asp-controller="Doctors" asp-action="Delete" asp-route-id = "@item.Id">Delete</a> |
+                    <a asp-area="Administration" asp-controller="Doctors" asp-action="Restore" asp-route-id = "@item.Id">Restore</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

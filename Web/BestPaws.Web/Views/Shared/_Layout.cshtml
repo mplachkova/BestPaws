@@ -23,7 +23,8 @@
             <div class="container">
                 <div class="col-3">
                     <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">
-                        <img class="img-fluid" src="~/img/mainLogo_tr.png" alt="Pawsitively passionate about pets!"></a>
+                        <img class="img-fluid" src="~/img/mainLogo_tr.png" alt="Pawsitively passionate about pets!">
+                    </a>
                 </div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown-1" aria-controls="navbarNavDropdown-1"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -31,11 +32,15 @@
                 </button>
                 <div class="collapse navbar-collapse text-center" id="navbarNavDropdown-1">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#a" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                               aria-haspopup="true" aria-expanded="false">
                                 About Us
-                                <span class="sr-only">(current)</span>
                             </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" asp-area="" asp-controller="AboutUs" asp-action="Index">About Us</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Doctor" asp-action="Index">Our Team</a>
+                            </div>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link" asp-area="" asp-controller="Service" asp-action="Index">Our Services</a>
@@ -43,17 +48,6 @@
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="PetCenter" asp-action="Index">Pet Center</a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#a" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                               aria-haspopup="true" aria-expanded="false">
-                                Services
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" asp-controller="Service" asp-action="AddService">Add Service</a>
-                                <a class="dropdown-item" asp-controller="Service" asp-action="ManageServices">Manage Services</a>
-                            </div>
-                        </li>
-
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>

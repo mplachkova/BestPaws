@@ -22,15 +22,15 @@
                         <td class="text-right">
                             @if (service.IsDeleted)
                             {
-                                <a class="disabled btn btn-danger" asp-area="" asp-controller="Service" asp-action="Delete" asp-route-id=@service.Id>Delete</a>
-                                <a class="btn btn-info" asp-area="" asp-controller="Service" asp-action="Restore" asp-route-id=@service.Id>Restore</a>
+                                <a class="disabled btn btn-danger" asp-controller="Dashboard" asp-action="Delete" asp-route-id=@service.Id>Delete</a>
+                                <a class="btn btn-info" asp-controller="Dashboard" asp-action="Restore" asp-route-id=@service.Id>Restore</a>
                             }
                             else if (!service.IsDeleted)
                             {
-                                <a class="btn btn-danger" asp-area="" asp-controller="Service" asp-action="Delete" asp-route-id=@service.Id>Delete</a>
-                                <a class="disabled btn btn-info" asp-area="" asp-controller="Service" asp-action="Restore" asp-route-id=@service.Id>Restore</a>
+                                <a class="btn btn-danger" asp-controller="Dashboard" asp-action="Delete" asp-route-id=@service.Id>Delete</a>
+                                <a class="disabled btn btn-info" asp-controller="Dashboard" asp-action="Restore" asp-route-id=@service.Id>Restore</a>
                             }
-                            <a class="btn btn-success" asp-area="" asp-controller="Service" asp-action="Edit" asp-route-id=@service.Id>Edit</a>
+                            <a class="btn btn-success" asp-controller="Dashboard" asp-action="Edit" asp-route-id=@service.Id>Edit</a>
                         </td>
                     </tr>
                 </tbody>

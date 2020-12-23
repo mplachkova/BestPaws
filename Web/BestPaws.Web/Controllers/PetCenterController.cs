@@ -41,7 +41,7 @@
             var model = new AddPetInputModel();
             model.AnimalTypes = this.animalTypeSevice.GetAllAnimalTypes();
             model.AnimalBreeds = this.breedService.GetAllAnimalBreeds();
-            model.Doctors = this.doctorService.GetAllDoctors();
+            model.Doctors = this.doctorService.GetAllDoctorsFirstAndLastName();
             return this.View(model);
         }
 
@@ -53,7 +53,7 @@
             {
                 input.AnimalTypes = this.animalTypeSevice.GetAllAnimalTypes();
                 input.AnimalBreeds = this.breedService.GetAllAnimalBreeds();
-                input.Doctors = this.doctorService.GetAllDoctors();
+                input.Doctors = this.doctorService.GetAllDoctorsFirstAndLastName();
                 return this.View(input);
             }
 

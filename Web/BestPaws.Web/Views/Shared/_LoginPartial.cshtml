@@ -13,7 +13,10 @@
         if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
         {
             <li class="nav-item">
-                <a class="nav-link text-info" asp-area="Administration" asp-controller="Dashboard" asp-action="Index" title="Admin">Admin</a>
+                <a class="nav-link text-info" asp-area="Administration" asp-controller="Doctors" asp-action="Index" title="Doctors">Doctors</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-info" asp-area="Administration" asp-controller="Dashboard" asp-action="ManageServices" title="Admin">Admin</a>
             </li>
         }
         <li class="nav-item">
@@ -25,8 +28,8 @@
     else
     {
         @*<li class="nav-item m-1">
-            <a class="nav-link btn btn-outline-danger" asp-area="Identity" asp-page="/Account/Register">Register</a>
-        </li>*@
+                <a class="nav-link btn btn-outline-danger" asp-area="Identity" asp-page="/Account/Register">Register</a>
+            </li>*@
         <li class="nav-item m-1">
             <a class="nav-link btn btn-outline-danger" asp-area="Identity" asp-page="/Account/Login">Login</a>
         </li>

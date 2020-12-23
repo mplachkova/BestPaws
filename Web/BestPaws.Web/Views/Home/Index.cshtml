@@ -10,7 +10,7 @@
         <h1 class="display-3">A Warm Welcome!</h1>
         <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, ipsam, eligendi, in quo sunt possimus non incidunt odit vero aliquid similique quaerat nam nobis illo aspernatur vitae fugiat numquam repellat.</p>
         <p>Test how the lead is working</p>
-        <a href="#" class="btn btn-info btn-lg">Call to action!</a>
+        <a class="btn btn-info btn-lg" asp-area="" asp-controller="AboutUs" asp-action="Index">Find out more!</a>
     </header>
 
     <!-- Page Features -->
@@ -24,7 +24,7 @@
                     <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
                 </div>
                 <div class="card-footer">
-                    <a href="#" class="btn btn-outline-info">Find Out More!</a>
+                    <a class="btn btn-outline-info" asp-area="" asp-controller="Doctor" asp-action="Index">Find Out More!</a>
                 </div>
             </div>
         </div>
@@ -37,7 +37,7 @@
                     <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.</p>
                 </div>
                 <div class="card-footer">
-                    <a class="btn btn-outline-info" asp-controller="Service" asp-action="Index" >Find Out More!</a>
+                    <a class="btn btn-outline-info" asp-area="" asp-controller="Service" asp-action="Index" >Find Out More!</a>
                 </div>
             </div>
         </div>
