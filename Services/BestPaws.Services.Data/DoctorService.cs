@@ -83,15 +83,11 @@
             return result;
         }
 
-        public IEnumerable<SelectListItem> GetAllWithDeleted()
+        public IEnumerable<T> GetAllWithDeleted<T>()
         {
             var doctorsList = this.doctorRepository
                .AllWithDeleted()
-               .Select(x => new SelectListItem
-               {
-                   Text = x.FirstName + " " + x.LastName,
-                   Value = x.Id,
-               })
+               .To<T>()
                .ToList();
             return doctorsList;
         }

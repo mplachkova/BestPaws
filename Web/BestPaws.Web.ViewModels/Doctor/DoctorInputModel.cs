@@ -11,6 +11,12 @@
         [Required]
         public string Id { get; set; }
 
+        public ApplicationUser ApplicationUser { get; set; }
+
+        public string ApplicationUserId { get; set; }
+
+        public bool IsDeleted { get; set; }
+
         [Required]
         [MinLength(2)]
         [MaxLength(20)]

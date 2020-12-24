@@ -15,6 +15,10 @@
     <Compile Remove="Areas\Administration\Controllers\ServiceController.cs" />
     <Compile Remove="Controllers\SettingsController.cs" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Areas\Administration\Views\Doctors\Details.cshtml" />
+  </ItemGroup>
   <ItemGroup>
     <AdditionalFiles Include="..\..\stylecop.json" />
   </ItemGroup>

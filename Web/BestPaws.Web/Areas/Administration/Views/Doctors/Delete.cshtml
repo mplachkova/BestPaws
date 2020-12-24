@@ -4,50 +4,52 @@
     ViewData["Title"] = "Delete";
 }
 
-<h1>Delete</h1>
 
-<div>
-    <h4>Doctor</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Model.FirstName
-        </dt>
-        <dd class="col-sm-10">
-            @Model.FirstName
-        </dd>
-        <dt class="col-sm-2">
-            @Model.MiddleName
-        </dt>
-        <dd class="col-sm-10">
-            @Model.MiddleName
-        </dd>
-        <dt class="col-sm-2">
-            @Model.LastName
-        </dt>
-        <dd class="col-sm-10">
-            @Model.LastName
-        </dd>
-        <dt class="col-sm-2">
-            @Model.Id
-        </dt>
-        <dt class="col-sm-2">
-            @Model.Specialization
-        </dt>
-        <dd class="col-sm-10">
-            @Model.Specialization
-        </dd>
-        <dt class="col-sm-2">
-            @Model.Biography
-        </dt>
-        <dd class="col-sm-10">
-            @Model.Biography
-        </dd>
-    </dl>
-
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
-    </form>
+<div class="container m-5">
+    <div class="col-8 offset-2">
+        <h1 class="text-danger m-3">Delete</h1>
+        <hr />
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div>
+            <div>
+                <form method="post" asp-action="Delete">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="FirstName" class="control-label"></label>
+                        <input asp-for="FirstName" class="form-control" />
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="MiddleName" class="control-label"></label>
+                        <input asp-for="MiddleName" class="form-control" />
+                        <span asp-validation-for="MiddleName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="LastName" class="control-label"></label>
+                        <input asp-for="LastName" class="form-control" />
+                        <span asp-validation-for="LastName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Id" class="control-label"></label>
+                        <input asp-for="Id" class="form-control" />
+                        <span asp-validation-for="Id" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Specialization" class="control-label"></label>
+                        <input asp-for="Specialization" class="form-control" />
+                        <span asp-validation-for="Specialization" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Biography" class="control-label"></label>
+                        <input asp-for="Biography" class="form-control" />
+                        <span asp-validation-for="Biography" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Delete" class="btn btn-danger" />
+                        <a class="btn btn-info" asp-action="Index">Back to List</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>

@@ -23,7 +23,7 @@
         // GET: Administration/Doctors
         public IActionResult Index()
         {
-            var doctorsList = this.doctorService.GetAll<DoctorViewModel>();
+            var doctorsList = this.doctorService.GetAllWithDeleted<DoctorViewModel>();
             var viewModel = new DoctorListViewModel { Doctors = doctorsList };
             return this.View(viewModel);
         }

@@ -1,67 +1,83 @@
 ﻿@model BestPaws.Web.ViewModels.Doctor.DoctorListViewModel
 
-@{
-    ViewData["Title"] = "Index";
-}
-
-<h1>Index</h1>
-
+<h3 class="mb-3 mt-3">Doctors</h3>
 <p>
-    <a asp-action="Create">Create New</a>
+    <a class="btn btn-info btn-lg mb-3" asp-action="Create">Register new</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                FirstName
-            </th>
-            <th>
-                MiddleName
-            </th>
-            <th>
-                LastName
-            </th>
-            <th>
-                Id
-            </th>
-            <th>
-                Specialization
-            </th>
-            <th>
-                Biography
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.Doctors)
-        {
-            <tr>
-                <td>
-                    @item.FirstName
-                </td>
-                <td>
-                    @item.MiddleName
-                </td>
-                <td>
-                    @item.LastName
-                </td>
-                <td>
-                    @item.Id
-                </td>
-                <td>
-                    @item.Specialization
-                </td>
-                <td>
-                    @item.Biography
-                </td>
-                <td>
-                    <a asp-area="Administration" asp-controller="Doctors" asp-action="Edit" asp-route-id = "@item.Id">Edit</a>|
-                    <a asp-area="Administration" asp-controller="Doctors" asp-action="Details" asp-route-id = "@item.Id">Details</a> |
-                    <a asp-area="Administration" asp-controller="Doctors" asp-action="Delete" asp-route-id = "@item.Id">Delete</a> |
-                    <a asp-area="Administration" asp-controller="Doctors" asp-action="Restore" asp-route-id = "@item.Id">Restore</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+@if (TempData.ContainsKey("Message"))
+{
+    <div class="container alert alert-secondary alert-dismissible fade show text-center col-md-7 p-3 mb-5" role="alert">
+        @this.TempData["Message"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+<div class="container">
+    <div class="row">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        FirstName
+                    </th>
+                    <th>
+                        MiddleName
+                    </th>
+                    <th>
+                        LastName
+                    </th>
+                    <th>
+                        Id
+                    </th>
+                    <th>
+                        Specialization
+                    </th>
+                    <th>
+                        Biography
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody class="text-left">
+                @foreach (var doctor in Model.Doctors)
+                {
+                    <tr>
+                        <td>
+                            @doctor.FirstName
+                        </td>
+                        <td>
+                            @doctor.MiddleName
+                        </td>
+                        <td>
+                            @doctor.LastName
+                        </td>
+                        <td>
+                            @doctor.Id
+                        </td>
+                        <td>
+                            @doctor.Specialization
+                        </td>
+                        <td>
+                            @doctor.Biography
+                        </td>
+                        <td>
+                        <td>
+                            @if (doctor.IsDeleted)
+                            {
+                                <a class="disabled btn btn-danger m-1" asp-area="Administration" asp-controller="Doctors" asp-action="Delete" asp-route-id=@doctor.Id>Delete</a>
+                                <a class="btn btn-info m-1" asp-area="Administration" asp-controller="Doctors" asp-action="Restore" asp-route-id=@doctor.Id>Restore</a>
+                            }
+                            else if (!doctor.ApplicationUser.IsDeleted)
+                            {
+                                <a class="btn btn-danger" asp-area="Administration" asp-controller="Doctors" asp-action="Delete" asp-route-id=@doctor.Id>Delete</a>
+                                <a class="disabled btn btn-info" asp-area="Administration" asp-controller="Doctors" asp-action="Restore" asp-route-id=@doctor.Id>Restore</a>
+                            }
+                            <a class="btn btn-success" asp-area="Administration" asp-controller="Doctors" asp-action="Edit" asp-route-id=@doctor.Id>Edit</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -18,7 +18,7 @@
 
         IEnumerable<T> GetAll<T>();
 
-        IEnumerable<SelectListItem> GetAllWithDeleted();
+        IEnumerable<T> GetAllWithDeleted<T>();
 
         Task EditAsync(string id, DoctorInputModel model);
 

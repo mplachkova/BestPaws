@@ -6,7 +6,6 @@
 
     public class DoctorViewModel : IMapFrom<Doctor>, IHaveCustomMappings
     {
-
         public string Id { get; set; }
 
         public string FirstName { get; set; }
@@ -15,7 +14,11 @@
 
         public string LastName { get; set; }
 
+        public bool IsDeleted { get; set; }
+
         public string ApplicationUserId { get; set; }
+
+        public ApplicationUser ApplicationUser { get; set; }
 
         public string Specialization { get; set; }
 
