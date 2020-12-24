@@ -5,6 +5,7 @@
 
     using BestPaws.Data.Common.Repositories;
     using BestPaws.Data.Models;
+    using BestPaws.Web.ViewModels.PetCenter;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.Extensions.DependencyInjection;
 
@@ -12,21 +13,26 @@
     {
         private readonly IDeletableEntityRepository<ApplicationUser> userRepositiry;
         private readonly IServiceProvider service;
+        private readonly IDeletableEntityRepository<PetOwner> ownerRepository;
 
-        public UserService(IDeletableEntityRepository<ApplicationUser> userRepo, IServiceProvider serviceProvider)
+        public UserService(
+            IDeletableEntityRepository<ApplicationUser> userRepo,
+            IServiceProvider serviceProvider,
+            IDeletableEntityRepository<PetOwner> ownerRepo)
         {
             this.userRepositiry = userRepo;
             this.service = serviceProvider;
+            this.ownerRepository = ownerRepo;
         }
 
-        public async Task CreateUserAsync(string input)
+        public async Task CreateUserAsync(AddPetInputModel input)
         {
             var userManager = this.service.GetRequiredService<UserManager<ApplicationUser>>();
-            string password = this.GeneratePassword(input);
+            string password = this.GeneratePassword(input.EmailAddress);
             var user = new ApplicationUser
             {
-                UserName = input,
-                Email = input,
+                UserName = input.EmailAddress,
+                Email = input.EmailAddress,
             };
 
             IdentityResult result = new IdentityResult();
@@ -40,16 +46,18 @@
 
             user.PetOwner = new PetOwner
             {
-                Id = user.Id,
+                ApplicationUserId = user.Id,
                 EmailAddress = user.Email,
             };
+
             await this.userRepositiry.SaveChangesAsync();
+            await this.ownerRepository.SaveChangesAsync();
         }
 
         private string GeneratePassword(string input)
         {
             int passwordLength = input.IndexOf("@");
-            string passwordString = input.Substring(0, passwordLength) + "12345";
+            string passwordString = input.ToLower().Substring(0, passwordLength) + "12345";
             return passwordString;
         }
     }

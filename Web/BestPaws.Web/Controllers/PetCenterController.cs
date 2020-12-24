@@ -1,5 +1,6 @@
 ﻿namespace BestPaws.Web.Controllers
 {
+    using System.Security.Claims;
     using System.Threading.Tasks;
 
     using BestPaws.Services.Data;
@@ -30,7 +31,8 @@
         [Authorize]
         public IActionResult Index()
         {
-            var pets = this.petService.GetAll<PetCenterViewModel>();
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var pets = this.petService.GetAllForCurrentUser<PetCenterViewModel>(userId);
             var model = new PetCenterListViewModel { Pets = pets };
             return this.View(model);
         }

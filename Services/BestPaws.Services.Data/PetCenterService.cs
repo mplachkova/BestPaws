@@ -18,9 +18,9 @@
 
         public PetCenterService(
             IDeletableEntityRepository<Pet> petRepository,
-            IUserService service,
             IDeletableEntityRepository<ApplicationUser> userRepository,
-            IDeletableEntityRepository<PetOwner> ownerRepository)
+            IDeletableEntityRepository<PetOwner> ownerRepository,
+            IUserService service)
         {
             this.petRepository = petRepository;
             this.userService = service;
@@ -34,9 +34,29 @@
             return result;
         }
 
+        public IEnumerable<T> GetAllForCurrentUser<T>(string id)
+        {
+            var currentAppOwner = this.userRepository
+                .AllAsNoTracking()
+                .FirstOrDefault(x => x.Id == id);
+            var currentPetowner = this.ownerRepository
+                .AllAsNoTracking()
+                .FirstOrDefault(x => x.ApplicationUser == currentAppOwner);
+
+            var result = this.petRepository
+                .All()
+                .Where(x => x.PetOwner == currentPetowner)
+                .To<T>()
+                .ToList();
+            return result;
+        }
+
         public async Task CreateAsync(AddPetInputModel input)
         {
-            await this.userService.CreateUserAsync(input.EmailAddress);
+            await this.userService.CreateUserAsync(input);
+            var currentAppUser = this.userRepository
+                .AllAsNoTracking()
+                .FirstOrDefault(x => x.UserName == input.EmailAddress);
 
             var pet = new Pet
             {
@@ -48,17 +68,12 @@
                 DoctorId = input.DoctorId,
             };
 
-            var currentAppUser = this.userRepository
-                .AllAsNoTracking()
-                .FirstOrDefault(x => x.UserName == input.EmailAddress);
-
-            var currentPetOwner = currentAppUser.PetOwner;
-            pet.PetOwner = currentPetOwner;
-            currentPetOwner.Pets.Add(pet);
-
+            var currentPetOwner = this.ownerRepository
+                .All()
+                .FirstOrDefault(x => x.ApplicationUser == currentAppUser);
             await this.petRepository.AddAsync(pet);
-
             await this.petRepository.SaveChangesAsync();
+            currentPetOwner.Pets.Add(pet);
             await this.ownerRepository.SaveChangesAsync();
         }
     }

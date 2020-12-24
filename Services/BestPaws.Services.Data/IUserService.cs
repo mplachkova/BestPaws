@@ -2,8 +2,10 @@
 {
     using System.Threading.Tasks;
 
+    using BestPaws.Web.ViewModels.PetCenter;
+
     public interface IUserService
     {
-        Task CreateUserAsync(string userName);
+        Task CreateUserAsync(AddPetInputModel model);
     }
 }

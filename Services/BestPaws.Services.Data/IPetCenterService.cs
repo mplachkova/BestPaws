@@ -9,6 +9,10 @@
     {
         IEnumerable<T> GetAll<T>();
 
+        IEnumerable<T> GetAllForCurrentUser<T>(string id);
+
         Task CreateAsync(AddPetInputModel input);
+
+        //IEnumerable<T> GellAllPetInfo<T>(int id);
     }
 }

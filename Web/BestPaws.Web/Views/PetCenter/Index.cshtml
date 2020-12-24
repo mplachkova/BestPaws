@@ -1,16 +1,18 @@
 ﻿@model BestPaws.Web.ViewModels.PetCenter.PetCenterListViewModel
 @{
-    this.ViewData["Pets"] = "Pets";
+    this.ViewData["Pets"] = "My pets";
 }
 
-<h3 class="text-info">@this.ViewData["Pets"]</h3>
+<h3 class="text-info mt-3">@this.ViewData["Pets"]</h3>
 
 @foreach (var pet in this.Model.Pets)
 {
-    <div>Name: @pet.Name</div>
+    <div>
+    <a class="btn btn-info m-1" asp-area="" asp-controller="PetCenter" asp-action="Index">@pet.Name</a>
+    </div>
 }
 
 @if (User.IsInRole("Doctor") || User.IsInRole("Administrator"))
 {
-    <a asp-action="RegisterPet" class="btn btn-outline-info">Register a new pet</a>
+    <a asp-action="RegisterPet" class="btn btn-success m-1">Register a new pet</a>
 }
