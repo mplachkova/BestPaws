@@ -4,6 +4,6 @@
 
     public class PetCenterListViewModel
     {
-        public IEnumerable<PetCenterViewMode> Pets { get; set; }
+        public IEnumerable<PetCenterViewModel> Pets { get; set; }
     }
 }

@@ -7,7 +7,7 @@
     using BestPaws.Data.Models;
     using BestPaws.Services.Mapping;
 
-    public class PetCenterViewMode : IMapFrom<Pet>, IHaveCustomMappings
+    public class PetCenterViewModel : IMapFrom<Pet>, IHaveCustomMappings
     {
         public int Id { get; set; }
 
@@ -39,7 +39,7 @@
 
         public void CreateMappings(IProfileExpression configuration)
         {
-            configuration.CreateMap<Pet, PetCenterViewMode>();
+            configuration.CreateMap<Pet, PetCenterViewModel>();
         }
     }
 }
