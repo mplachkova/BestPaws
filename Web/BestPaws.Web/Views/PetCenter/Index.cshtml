@@ -7,8 +7,8 @@
 
 @foreach (var pet in this.Model.Pets)
 {
-    <div>
-    <a class="btn btn-info m-1" asp-area="" asp-controller="PetCenter" asp-action="Index">@pet.Name</a>
+    <div class="form-group">
+        <a class="btn btn-info m-1" asp-area="" asp-controller="PetCenter" asp-action="PetInfo" asp-route-id=@pet.Id>@pet.Name</a>
     </div>
 }
 

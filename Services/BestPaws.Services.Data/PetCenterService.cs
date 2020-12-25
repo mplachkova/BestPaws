@@ -76,5 +76,15 @@
             currentPetOwner.Pets.Add(pet);
             await this.ownerRepository.SaveChangesAsync();
         }
+
+        public PetCenterViewModel GellAllPetInfo(int id)
+        {
+            var currentPet = this.petRepository
+                .AllAsNoTracking()
+                .To<PetCenterViewModel>()
+                .FirstOrDefault(x => x.Id == id);
+
+            return currentPet;
+        }
     }
 }

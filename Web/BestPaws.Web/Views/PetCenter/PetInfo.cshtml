@@ -1,0 +1,30 @@
+﻿@model BestPaws.Web.ViewModels.PetCenter.PetCenterViewModel
+
+@{
+    this.ViewData["Title"] = Model.Name;
+}
+
+<h1>@this.ViewData["Title"]</h1>
+
+<div class="container">
+    <div class="col-md-8 offset-2">
+        <table class="table table-striped">
+            <tr>
+                <th>Owner Name</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Breed</th>
+                <th>Gender</th>
+                <th>Age</th>
+            </tr>
+            <tr>
+                <td>@Model.PetOwner.FirstName</td>
+                <td>@Model.Name</td>
+                <td>@Model.AnimalType.Name</td>
+                <td>@Model.AnimalBreed.Name</td>
+                <td>@Model.Gender</td>
+                <td>@Model.Age</td>
+            </tr>
+        </table>
+    </div>
+</div>

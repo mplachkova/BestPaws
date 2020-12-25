@@ -1,6 +1,7 @@
-﻿namespace BestPaws.Web.ViewModels
+﻿namespace BestPaws.Web.ViewModels.PetCenter
 {
     using System;
+    using System.Collections.Generic;
 
     using AutoMapper;
     using BestPaws.Data.Models;
@@ -9,6 +10,8 @@
     public class PetCenterViewModel : IMapFrom<Pet>, IHaveCustomMappings
     {
         public int Id { get; set; }
+
+        public PetOwner PetOwner { get; set; }
 
         public DateTime CreatedOn { get; set; }
 
@@ -19,6 +22,18 @@
         public byte Age { get; set; }
 
         public string Gender { get; set; }
+
+        public AnimalType AnimalType { get; set; }
+
+        public AnimalBreed AnimalBreed { get; set; }
+
+        public ICollection<PetsDiagnoses> PetsDiagnoses { get; set; }
+
+        public ICollection<Prescription> Prescriptions { get; set; }
+
+        public ICollection<Test> Tests { get; set; }
+
+        public ICollection<PetsTreatments> PetsTreatments { get; set; }
 
         public void CreateMappings(IProfileExpression configuration)
         {

@@ -16,14 +16,6 @@
             this.service = service;
         }
 
-        public IActionResult Index()
-        {
-            var servicesList = this.service.GetAll();
-            servicesList = servicesList.OrderBy(x => x.Name);
-            var model = new ServiceListViewModel { Services = servicesList };
-            return this.View(model);
-        }
-
         // For Admin to Add new petService offered by the clinic
         public IActionResult AddService()
         {
@@ -40,7 +32,7 @@
 
             await this.service.CreateAsync(input);
             this.TempData["Message"] = "Service was added successfully";
-            return this.RedirectToAction(nameof(this.Index));
+            return this.RedirectToAction(nameof(this.ManageServices));
         }
 
         // For Admin to Edit ot Delete/Restore Service

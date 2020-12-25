@@ -13,6 +13,6 @@
 
         Task CreateAsync(AddPetInputModel input);
 
-        //IEnumerable<T> GellAllPetInfo<T>(int id);
+        PetCenterViewModel GellAllPetInfo(int id);
     }
 }

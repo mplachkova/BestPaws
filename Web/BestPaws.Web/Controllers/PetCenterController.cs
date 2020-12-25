@@ -62,5 +62,11 @@
             await this.petService.CreateAsync(input);
             return this.RedirectToAction(nameof(this.Index));
         }
+
+        public IActionResult PetInfo(int id)
+        {
+            var model = this.petService.GellAllPetInfo(id);
+            return this.View(model);
+        }
     }
 }

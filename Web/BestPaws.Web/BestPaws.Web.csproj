@@ -18,6 +18,9 @@
 
   <ItemGroup>
     <Content Remove="Areas\Administration\Views\Doctors\Details.cshtml" />
+    <Content Remove="Views\Service\AddService.cshtml" />
+    <Content Remove="Views\Service\Edit.cshtml" />
+    <Content Remove="Views\Service\ManageServices.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <AdditionalFiles Include="..\..\stylecop.json" />
