@@ -2,7 +2,7 @@
 {
     using System;
     using System.Threading.Tasks;
-
+    using BestPaws.Common;
     using BestPaws.Data.Common.Repositories;
     using BestPaws.Data.Models;
     using BestPaws.Web.ViewModels.PetCenter;
@@ -41,7 +41,7 @@
 
             if (result.Succeeded)
             {
-                await userManager.AddToRoleAsync(user, "Owner");
+                await userManager.AddToRoleAsync(user, GlobalConstants.PetOwnerRoleName);
             }
 
             user.PetOwner = new PetOwner

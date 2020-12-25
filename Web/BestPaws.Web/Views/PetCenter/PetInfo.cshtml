@@ -1,30 +1,46 @@
-﻿@model BestPaws.Web.ViewModels.PetCenter.PetCenterViewModel
+﻿@model BestPaws.Web.ViewModels.PetCenter.PetCenterViewMode
 
 @{
     this.ViewData["Title"] = Model.Name;
 }
 
-<h1>@this.ViewData["Title"]</h1>
 
 <div class="container">
     <div class="col-md-8 offset-2">
+        <h2 class="text-info mt-3">@this.ViewData["Title"]</h2>
+        <h4 class="text-info mb-5 mt-2">Doctor: @Model.Doctor.FirstName @Model.Doctor.LastName</h4>
+        <h5 class="text-success">Pet Information:</h5>
         <table class="table table-striped">
             <tr>
                 <th>Owner Name</th>
                 <th>Name</th>
                 <th>Type</th>
                 <th>Breed</th>
-                <th>Gender</th>
                 <th>Age</th>
+                <th>Gender</th>
             </tr>
             <tr>
-                <td>@Model.PetOwner.FirstName</td>
+                <td>
+                    @if (Model.PetOwner.FirstName == null || Model.PetOwner.LastName == null)
+                    {
+                        @Model.PetOwner.EmailAddress
+                    }
+                    else
+                    {
+                        @Model.PetOwner.FirstName
+                    }
+                </td>
                 <td>@Model.Name</td>
                 <td>@Model.AnimalType.Name</td>
                 <td>@Model.AnimalBreed.Name</td>
-                <td>@Model.Gender</td>
                 <td>@Model.Age</td>
+                <td>@Model.Gender</td>
             </tr>
         </table>
+        <a class="btn btn-info" asp-area="" asp-controller="PetCenter" asp-action="Treatemnts">Treatments</a>
+        <a class="btn btn-info" asp-area="" asp-controller="PetCenter" asp-action="Tests">Tests</a>
+        <div class="text-right">
+            <a class="btn btn-success mt-4" asp-area="" asp-controller="PetCenter" asp-action="Index">Back to list</a>
+        </div>
     </div>
 </div>

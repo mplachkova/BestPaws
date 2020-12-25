@@ -40,6 +40,8 @@
         [StringLength(10)]
         public string PhoneNumber { get; set; }
 
+        public string FirstName { get; set; }
+
         public IEnumerable<SelectListItem> Doctors { get; set; }
 
         public IEnumerable<SelectListItem> AnimalTypes { get; set; }
