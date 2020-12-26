@@ -6,7 +6,6 @@ This is my course project for ASP.NET Core module at SoftUni (October-December 2
 <p>Along with the standard information about the veterinarian team, the services offered by the clinic, BestPaws provides features as:
 <ul>
 <li>an access to user’s pet medical records such as passed exams, laboratory test results, vaccination dates, medicine prescriptions, treating physician ect.;</li>
-<li>an option to book an appointment online;</li>
 </ul>
 <h3>Used technologies:</h3>
     <ul>
