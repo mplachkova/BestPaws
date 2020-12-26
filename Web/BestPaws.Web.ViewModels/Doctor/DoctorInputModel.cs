@@ -8,7 +8,6 @@
 
     public class DoctorInputModel : IMapFrom<Doctor>, IHaveCustomMappings
     {
-        [Required]
         public string Id { get; set; }
 
         public ApplicationUser ApplicationUser { get; set; }

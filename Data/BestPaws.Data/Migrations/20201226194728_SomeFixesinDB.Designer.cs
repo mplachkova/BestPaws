@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BestPaws.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20201212162052_TeratmentDBAdded")]
-    partial class TeratmentDBAdded
+    [Migration("20201226194728_SomeFixesinDB")]
+    partial class SomeFixesinDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -145,23 +145,14 @@ namespace BestPaws.Data.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<string>("FirstName")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
-
-                    b.Property<string>("LastName")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("MiddleName")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
@@ -265,8 +256,17 @@ namespace BestPaws.Data.Migrations
                     b.Property<DateTime?>("DeletedOn")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MiddleName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
@@ -279,7 +279,9 @@ namespace BestPaws.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ApplicationUserId");
+                    b.HasIndex("ApplicationUserId")
+                        .IsUnique()
+                        .HasFilter("[ApplicationUserId] IS NOT NULL");
 
                     b.HasIndex("IsDeleted");
 
@@ -346,14 +348,14 @@ namespace BestPaws.Data.Migrations
                     b.Property<int>("AnimalTypeId")
                         .HasColumnType("int");
 
-                    b.Property<string>("ApplicationUserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("DeletedOn")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("DoctorId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("Gender")
                         .HasColumnType("int");
@@ -367,15 +369,20 @@ namespace BestPaws.Data.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("PetOwnerId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("AnimalBreedId");
 
                     b.HasIndex("AnimalTypeId");
 
-                    b.HasIndex("ApplicationUserId");
+                    b.HasIndex("DoctorId");
 
                     b.HasIndex("IsDeleted");
+
+                    b.HasIndex("PetOwnerId");
 
                     b.ToTable("Pets");
                 });
@@ -400,8 +407,17 @@ namespace BestPaws.Data.Migrations
                     b.Property<string>("EmailAddress")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MiddleName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
@@ -411,7 +427,9 @@ namespace BestPaws.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ApplicationUserId");
+                    b.HasIndex("ApplicationUserId")
+                        .IsUnique()
+                        .HasFilter("[ApplicationUserId] IS NOT NULL");
 
                     b.HasIndex("IsDeleted");
 
@@ -910,8 +928,8 @@ namespace BestPaws.Data.Migrations
             modelBuilder.Entity("BestPaws.Data.Models.Doctor", b =>
                 {
                     b.HasOne("BestPaws.Data.Models.ApplicationUser", "ApplicationUser")
-                        .WithMany()
-                        .HasForeignKey("ApplicationUserId");
+                        .WithOne("Doctor")
+                        .HasForeignKey("BestPaws.Data.Models.Doctor", "ApplicationUserId");
                 });
 
             modelBuilder.Entity("BestPaws.Data.Models.MedicamentsPrescriptions", b =>
@@ -941,16 +959,20 @@ namespace BestPaws.Data.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("BestPaws.Data.Models.ApplicationUser", "ApplicationUser")
-                        .WithMany()
-                        .HasForeignKey("ApplicationUserId");
+                    b.HasOne("BestPaws.Data.Models.Doctor", "Doctor")
+                        .WithMany("Pets")
+                        .HasForeignKey("DoctorId");
+
+                    b.HasOne("BestPaws.Data.Models.PetOwner", "PetOwner")
+                        .WithMany("Pets")
+                        .HasForeignKey("PetOwnerId");
                 });
 
             modelBuilder.Entity("BestPaws.Data.Models.PetOwner", b =>
                 {
                     b.HasOne("BestPaws.Data.Models.ApplicationUser", "ApplicationUser")
-                        .WithMany()
-                        .HasForeignKey("ApplicationUserId");
+                        .WithOne("PetOwner")
+                        .HasForeignKey("BestPaws.Data.Models.PetOwner", "ApplicationUserId");
                 });
 
             modelBuilder.Entity("BestPaws.Data.Models.PetsDiagnoses", b =>
