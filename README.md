@@ -13,6 +13,7 @@ This is my course project for ASP.NET Core module at SoftUni (October-December 2
     <li>Entity Framework Core 3.1</li>
     <li>SQL Server</li>
     <li>Bootstrap</li>
+    <li>SendGrid</li>
     </ul>
 </p>
  <h3>Project template:</h3>
