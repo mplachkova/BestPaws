@@ -11,6 +11,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Areas\ContactForm\**" />
+    <Content Remove="Areas\ContactForm\**" />
+    <EmbeddedResource Remove="Areas\ContactForm\**" />
+    <None Remove="Areas\ContactForm\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="Areas\Administration\Controllers\ServiceAdminController.cs" />
     <Compile Remove="Areas\Administration\Controllers\ServiceController.cs" />
     <Compile Remove="Controllers\SettingsController.cs" />
@@ -21,6 +28,7 @@
     <Content Remove="Views\Service\AddService.cshtml" />
     <Content Remove="Views\Service\Edit.cshtml" />
     <Content Remove="Views\Service\ManageServices.cshtml" />
+    <Content Remove="wwwroot\img\dog-4415649_1920.jpg" />
   </ItemGroup>
   <ItemGroup>
     <AdditionalFiles Include="..\..\stylecop.json" />

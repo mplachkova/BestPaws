@@ -13,6 +13,6 @@
 
         Task CreateAsync(AddPetInputModel input);
 
-        PetCenterViewModel GellAllPetInfo(int id);
+        PetCenterViewMode GellAllPetInfo(int id);
     }
 }

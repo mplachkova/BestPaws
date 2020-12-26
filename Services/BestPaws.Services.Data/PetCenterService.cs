@@ -113,11 +113,11 @@
             await this.doctorRepository.SaveChangesAsync();
         }
 
-        public PetCenterViewModel GellAllPetInfo(int id)
+        public PetCenterViewMode GellAllPetInfo(int id)
         {
             var currentPet = this.petRepository
                 .AllAsNoTracking()
-                .To<PetCenterViewModel>()
+                .To<PetCenterViewMode>()
                 .FirstOrDefault(x => x.Id == id);
 
             return currentPet;

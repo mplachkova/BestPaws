@@ -32,7 +32,7 @@
         public IActionResult Index()
         {
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            var pets = this.petService.GetAllForCurrentUser<PetCenterViewModel>(userId);
+            var pets = this.petService.GetAllForCurrentUser<PetCenterViewMode>(userId);
             var model = new PetCenterListViewModel { Pets = pets };
             return this.View(model);
         }
