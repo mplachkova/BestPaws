@@ -17,10 +17,10 @@
 
         public async Task SendEmailAsync(string toEmail, string subject, string content)
         {
-            var apiKey = this.configuration["SendGridAPIKey"];
+            var apiKey = this.configuration["SendGridApiKey"];
             var client = new SendGridClient(apiKey);
             var from = new EmailAddress("bestpaws@abv.bg", "Best Paws");
-            var to = new EmailAddress(toEmail, "Example User");
+            var to = new EmailAddress("bestpaws@abv.bg", "Best Paws");
             var msg = MailHelper.CreateSingleEmail(from, to, subject, content, content);
             var response = await client.SendEmailAsync(msg);
         }
