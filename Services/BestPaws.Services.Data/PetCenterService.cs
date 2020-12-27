@@ -83,7 +83,7 @@
 
         public async Task CreateAsync(AddPetInputModel input)
         {
-            await this.userService.CreateUserAsync(input);
+            await this.userService.CreatePetOwnerAsync(input);
             var currentAppUser = this.userRepository
                 .AllAsNoTracking()
                 .FirstOrDefault(x => x.UserName == input.EmailAddress);

@@ -5,6 +5,7 @@
 
     using AutoMapper;
     using BestPaws.Data.Models;
+    using BestPaws.Data.Models.Enums;
     using BestPaws.Services.Mapping;
 
     public class PetCenterViewMode : IMapFrom<Pet>, IHaveCustomMappings
@@ -21,7 +22,7 @@
 
         public byte Age { get; set; }
 
-        public string Gender { get; set; }
+        public Gender Gender { get; set; }
 
         public Doctor Doctor { get; set; }
 

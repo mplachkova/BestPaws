@@ -4,7 +4,6 @@
     using System.Threading.Tasks;
 
     using BestPaws.Services.Data;
-    using BestPaws.Web.ViewModels;
     using BestPaws.Web.ViewModels.PetCenter;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;

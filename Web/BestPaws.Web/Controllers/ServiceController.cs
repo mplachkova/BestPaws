@@ -1,7 +1,6 @@
 ﻿namespace BestPaws.Web.Controllers
 {
     using System.Linq;
-    using System.Threading.Tasks;
 
     using BestPaws.Services.Data;
     using BestPaws.Web.ViewModels.Services;

@@ -3,9 +3,12 @@
     using System.Threading.Tasks;
 
     using BestPaws.Web.ViewModels.PetCenter;
+    using BestPaws.Web.ViewModels.Users;
 
     public interface IUserService
     {
-        Task CreateUserAsync(AddPetInputModel model);
+        Task CreatePetOwnerAsync(AddPetInputModel model);
+
+        Task CreateAdminAsync(UserInputModel input);
     }
 }

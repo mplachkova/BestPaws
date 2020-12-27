@@ -1,6 +1,5 @@
 ﻿namespace BestPaws.Web.Areas.Administration.Controllers
 {
-    using System.Linq;
     using System.Threading.Tasks;
 
     using BestPaws.Services.Data;

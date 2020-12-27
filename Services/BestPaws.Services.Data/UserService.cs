@@ -2,10 +2,12 @@
 {
     using System;
     using System.Threading.Tasks;
+
     using BestPaws.Common;
     using BestPaws.Data.Common.Repositories;
     using BestPaws.Data.Models;
     using BestPaws.Web.ViewModels.PetCenter;
+    using BestPaws.Web.ViewModels.Users;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.Extensions.DependencyInjection;
 
@@ -25,7 +27,7 @@
             this.ownerRepository = ownerRepo;
         }
 
-        public async Task CreateUserAsync(AddPetInputModel input)
+        public async Task CreatePetOwnerAsync(AddPetInputModel input)
         {
             var userManager = this.service.GetRequiredService<UserManager<ApplicationUser>>();
             string password = this.GeneratePassword(input.EmailAddress);
@@ -43,6 +45,10 @@
             {
                 await userManager.AddToRoleAsync(user, GlobalConstants.PetOwnerRoleName);
             }
+            else
+            {
+                throw new ArgumentException(string.Format(Common.ErrorMessages.UserIsNotInDesiredRole, user, Common.GlobalConstants.PetOwnerRoleName));
+            }
 
             user.PetOwner = new PetOwner
             {
@@ -52,6 +58,30 @@
 
             await this.userRepositiry.SaveChangesAsync();
             await this.ownerRepository.SaveChangesAsync();
+        }
+
+        public async Task CreateAdminAsync(UserInputModel input)
+        {
+            var userManager = this.service.GetRequiredService<UserManager<ApplicationUser>>();
+            var adminToBe = userManager.FindByEmailAsync(input.Email).Result;
+            if (adminToBe == null)
+            {
+                string password = this.GeneratePassword(input.Email);
+                adminToBe = new ApplicationUser
+                {
+                    UserName = input.Email,
+                    Email = input.Email,
+                };
+                IdentityResult result = new IdentityResult();
+                result = userManager.CreateAsync(adminToBe, password).Result;
+                if (!result.Succeeded)
+                {
+                    throw new ArgumentException(string.Format(Common.ErrorMessages.UserIsNotInDesiredRole, adminToBe, GlobalConstants.AdministratorRoleName));
+                }
+            }
+
+            await userManager.AddToRoleAsync(adminToBe, GlobalConstants.AdministratorRoleName);
+            await this.userRepositiry.SaveChangesAsync();
         }
 
         private string GeneratePassword(string input)

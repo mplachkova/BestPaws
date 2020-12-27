@@ -3,7 +3,6 @@
     using System.Diagnostics;
 
     using BestPaws.Web.ViewModels;
-
     using Microsoft.AspNetCore.Mvc;
 
     public class HomeController : BaseController
