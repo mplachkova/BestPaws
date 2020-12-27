@@ -46,6 +46,11 @@
 
         public async Task<IActionResult> Delete(int id)
         {
+            if (id == 0)
+            {
+                return this.RedirectToAction("NotFoundError", "Error");
+            }
+
             await this.service.DeleteAsync(id);
             this.TempData["Message"] = "Service was deleted successfully";
             return this.RedirectToAction(nameof(this.ManageServices));
@@ -53,6 +58,11 @@
 
         public IActionResult Edit(int id)
         {
+            if (id == 0)
+            {
+                return this.RedirectToAction("NotFoundError", "Error");
+            }
+
             var viewModel = this.service.GetServiceById(id);
             return this.View(viewModel);
         }
@@ -61,6 +71,11 @@
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, ServiceInputModel input)
         {
+            if (input == null)
+            {
+                return this.RedirectToAction("NotFoundError", "Error");
+            }
+
             if (!this.ModelState.IsValid)
             {
                 return this.View(input);
@@ -74,6 +89,11 @@
 
         public async Task<IActionResult> Restore(int id)
         {
+            if (id == 0)
+            {
+                return this.RedirectToAction("NotFoundError", "Error");
+            }
+
             await this.service.RestoreAsync(id);
             this.TempData["Message"] = "Service was restored successfully";
             return this.RedirectToAction(nameof(this.ManageServices));

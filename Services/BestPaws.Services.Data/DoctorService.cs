@@ -51,6 +51,10 @@
             {
                 await userManager.AddToRoleAsync(user, "Doctor");
             }
+            else
+            {
+                throw new ArgumentException(string.Format(Common.ErrorMessages.UserIsNotInDesiredRole, user, Common.GlobalConstants.DoctorRoleName));
+            }
 
             await this.doctorRepository.SaveChangesAsync();
         }

@@ -1,6 +1,5 @@
 ﻿namespace BestPaws.Web.Areas.Administration.Controllers
 {
-    using System;
     using System.Threading.Tasks;
 
     using BestPaws.Services.Data;
@@ -21,17 +20,17 @@
         {
             var doctorsList = this.doctorService.GetAllWithDeleted<DoctorViewModel>();
             var viewModel = new DoctorListViewModel { Doctors = doctorsList };
+            if (viewModel == null)
+            {
+                return this.RedirectToAction("NotFoundError", "Error");
+            }
+
             return this.View(viewModel);
         }
 
         // GET: Administration/Doctors/Details/5
         public IActionResult Details(string id)
         {
-            if (id == null)
-            {
-                return this.RedirectToAction("NotFoundError", "Error");
-            }
-
             var doctor = this.doctorService.GetDoctorById(id);
             return this.View(doctor);
         }
@@ -68,7 +67,7 @@
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(string id, DoctorInputModel model)
         {
-            if (model == null)
+            if (id == null || model == null)
             {
                 return this.RedirectToAction("NotFoundError", "Error");
             }
@@ -95,7 +94,7 @@
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(string id, DoctorInputModel model)
         {
-            if (id == null)
+            if (id == null || model == null)
             {
                 return this.RedirectToAction("NotFoundError", "Error");
             }
