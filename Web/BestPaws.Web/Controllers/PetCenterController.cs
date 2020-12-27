@@ -49,6 +49,7 @@
 
         [Authorize(Roles = "Doctor, Administrator")]
         [Microsoft.AspNetCore.Mvc.HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> RegisterPet(AddPetInputModel input)
         {
             if (!this.ModelState.IsValid)
@@ -66,6 +67,11 @@
         public IActionResult PetInfo(int id)
         {
             var model = this.petService.GellAllPetInfo(id);
+            if (model == null)
+            {
+                return this.RedirectToAction("NotFoundError", "Error");
+            }
+
             return this.View(model);
         }
     }

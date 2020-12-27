@@ -23,6 +23,7 @@
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddService(ServiceInputModel input)
         {
             if (!this.ModelState.IsValid)
@@ -57,6 +58,7 @@
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, ServiceInputModel input)
         {
             if (!this.ModelState.IsValid)

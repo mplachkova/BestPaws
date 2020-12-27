@@ -1,0 +1,22 @@
+﻿@model BestPaws.Web.ViewModels.ErrorViewModel
+
+@{
+    ViewData["Title"] = "Oops!";
+}
+
+
+<div class="container-md text-center">
+    <h3 class="display-4 text-danger">@ViewData["Title"]</h3>
+    <h4>It seems the page you're looking for doesn't exist!</h4>
+    <hr />
+    <div class="mb-2">
+        <br />
+        <img class="error-image" src="~/img/error.png" alt="Error" />
+        <div class="m-5 text-left">
+            <h3 class="text-info font-italic">Nothing to worry!</h3>
+            <p>May be this is your chance to find your new friend <a asp-controller="Adopt" asp-action="Index">here</a>.</p>
+            <p>Or just go back to our <a asp-controller="Home" asp-action="Index">home page</a>.</p> 
+        </div>
+    </div>
+</div>
+<div class="margin-top-50"></div>

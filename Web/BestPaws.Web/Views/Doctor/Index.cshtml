@@ -1,31 +1,24 @@
 ﻿@model BestPaws.Web.ViewModels.Doctor.DoctorListViewModel
-@{
-    this.ViewData["Title"] = "Our Team";
-}
-@*<h2 class="text-info">Our services</h2>*@
+@{ this.ViewData["Title"] = "Our Team"; }
 <header class="jumbotron my-3">
-    <img class="img-fluid" src="~/img/image.jpg" alt="Our Team" />
-    <h3 class="text-center">Our Team</h3>
+    <div class="container text-center mt-5 mb-2">
+        <h1 class="mb-0">Meet our team</h1><span>See who we are and how we can help you</span>
+    </div>
 </header>
-
-<div class="d-flex flex-fill">
-    <div class="row my-lg-5">
-        @foreach (var doctor in this.Model.Doctors)
+<div class="container mt-3">
+    <div class="row">
+        @foreach (var doctor in Model.Doctors)
         {
-            <div class="col-md-6">
-                <div class="card m-2">
-                    <div class="card-header">
-                        <img class="card-img" src="assets/img/dog-1.jpg" alt="Our team">
-                    </div>
-                    <div class="card-body">
-                        <h4 class="card-title mt-0">@doctor.FirstName @doctor.LastName</h4>
-                        <p class="card-text">@doctor.Biography </p>
-                    </div>
-                    <div class="card-footer">
-                        <a href="#a" class="btn btn-outline-info">Read More</a>
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-0 shadow">
+                    @*<img src="https://source.unsplash.com/TMgQMXoglsM/500x350" class="card-img-top" alt="...">*@
+                    <div class="card-body text-center">
+                        <h5 class="card-title mb-0">@doctor.FirstName @doctor.LastName</h5>
+                        <div class="card-text text-black-50">@doctor.Specialization</div>
                     </div>
                 </div>
             </div>
         }
+
     </div>
 </div>

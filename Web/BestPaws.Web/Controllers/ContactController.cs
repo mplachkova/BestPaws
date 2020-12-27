@@ -19,6 +19,7 @@
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Index(MessageInputModel input)
         {
             if (!this.ModelState.IsValid)

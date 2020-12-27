@@ -1,0 +1,17 @@
+﻿@model BestPaws.Web.ViewModels.ErrorViewModel
+@{
+    ViewData["Title"] = "Oops!";
+}
+
+<div class="container-md text-center">
+    <h3 class="display-4 text-danger">@ViewData["Title"]</h3>
+    <h4>Something went wrong! We are sorry about that.</h4>
+    <h4>Status code: <code class="text-dange">@this.Model.StatusCode</code></h4>
+    <div class="mb-5"></div>
+    <img class="img-fluid w-65 h-auto" src="~/img/error500.jpg" Error" />
+    <div class="mt-5">
+        <div>
+            <p>Go back to our <a asp-controller="Home" asp-action="Index">home page</a>.</p>
+        </div>
+    </div>
+</div>

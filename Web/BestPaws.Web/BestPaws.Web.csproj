@@ -28,7 +28,9 @@
     <Content Remove="Views\Service\AddService.cshtml" />
     <Content Remove="Views\Service\Edit.cshtml" />
     <Content Remove="Views\Service\ManageServices.cshtml" />
+    <Content Remove="Views\Shared\Error.cshtml" />
     <Content Remove="wwwroot\css\googleMap.css" />
+    <Content Remove="wwwroot\css\meetTheTeam.css" />
     <Content Remove="wwwroot\img\dog-4415649_1920.jpg" />
   </ItemGroup>
   <ItemGroup>

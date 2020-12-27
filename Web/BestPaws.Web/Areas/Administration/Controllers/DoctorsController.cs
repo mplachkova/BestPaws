@@ -1,15 +1,11 @@
 ﻿namespace BestPaws.Web.Areas.Administration.Controllers
 {
-    using System.Linq;
+    using System;
     using System.Threading.Tasks;
 
-    using BestPaws.Data.Models;
     using BestPaws.Services.Data;
-    using BestPaws.Web.ViewModels;
     using BestPaws.Web.ViewModels.Doctor;
     using Microsoft.AspNetCore.Mvc;
-    using Microsoft.AspNetCore.Mvc.Rendering;
-    using Microsoft.EntityFrameworkCore;
 
     public class DoctorsController : AdministrationController
     {
@@ -33,7 +29,7 @@
         {
             if (id == null)
             {
-                return this.NotFound();
+                return this.RedirectToAction("NotFoundError", "Error");
             }
 
             var doctor = this.doctorService.GetDoctorById(id);
@@ -47,6 +43,7 @@
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(DoctorInputModel inputModel)
         {
             if (!this.ModelState.IsValid)
@@ -71,9 +68,9 @@
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(string id, DoctorInputModel model)
         {
-            if (id == null)
+            if (model == null)
             {
-                return this.NotFound();
+                return this.RedirectToAction("NotFoundError", "Error");
             }
 
             if (!this.ModelState.IsValid)
@@ -100,7 +97,7 @@
         {
             if (id == null)
             {
-                return this.NotFound();
+                return this.RedirectToAction("NotFoundError", "Error");
             }
 
             if (!this.ModelState.IsValid)
@@ -117,7 +114,7 @@
         {
             if (id == null)
             {
-                return this.NotFound();
+                return this.RedirectToAction("NotFoundError", "Error");
             }
 
             await this.doctorService.RestoreAsync(id);

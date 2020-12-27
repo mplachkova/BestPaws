@@ -9,5 +9,9 @@
         public const string DoctorRoleName = "Doctor";
 
         public const string PetOwnerRoleName = "Owner";
+
+        public const int NotFound = 404;
+
+        public const int InternalServerError = 500;
     }
 }
