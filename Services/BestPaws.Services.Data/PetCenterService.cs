@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
+
     using BestPaws.Common;
     using BestPaws.Data.Common.Repositories;
     using BestPaws.Data.Models;
@@ -121,6 +122,14 @@
                 .FirstOrDefault(x => x.Id == id);
 
             return currentPet;
+        }
+
+        public string GetPetName(int id)
+        {
+            var pet = this.petRepository
+                 .AllAsNoTracking()
+                 .FirstOrDefault(x => x.Id == id);
+            return pet.Name;
         }
     }
 }

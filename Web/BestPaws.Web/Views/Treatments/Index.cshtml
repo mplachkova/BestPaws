@@ -1,0 +1,20 @@
+﻿@model BestPaws.Web.ViewModels.Treatments.TreatmentListViewModel
+@{ this.ViewData["Title"] = this.Model.PetName + "'s treatments"; }
+
+<h2>@this.ViewData["Title"]</h2>
+@if (Model.Treatments.Count() == 0)
+{
+    <h4>Currently there are no treatments to show.</h4>
+}
+else
+{
+    @foreach (var treatment in this.Model.Treatments)
+    {
+        <p>Treatment: @treatment.Name</p>
+        <p>Date: @treatment.CreatedOn</p>
+    }
+}
+<div>
+    <a class="btn btn-info" asp-area="" asp-controller="PetCenter" asp-action="PetInfo" asp-route-id="@Model.PetId">Back to Pet</a>
+    <a class="btn btn-info" asp-area="" asp-controller="PetCenter" asp-action="Index" asp-route-id="@Model.PetId">Back to Pets List</a>
+</div>

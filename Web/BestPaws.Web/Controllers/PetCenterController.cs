@@ -63,6 +63,7 @@
             return this.RedirectToAction(nameof(this.Index));
         }
 
+        [Authorize]
         public IActionResult PetInfo(int id)
         {
             var model = this.petService.GellAllPetInfo(id);

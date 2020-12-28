@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+
     using BestPaws.Data.Common.Models;
 
     public class Diagnosis : BaseDeletableModel<int>

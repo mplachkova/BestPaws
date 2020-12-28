@@ -1,9 +1,7 @@
 ﻿@model BestPaws.Web.ViewModels.PetCenter.PetCenterViewMode
+@using BestPaws.Common
 
-@{
-    this.ViewData["Title"] = Model.Name;
-}
-
+@{ this.ViewData["Title"] = Model.Name; }
 
 <div class="container">
     <div class="col-md-8 offset-2">
@@ -23,7 +21,7 @@
                 <td>
                     @if (Model.PetOwner.FirstName == null || Model.PetOwner.LastName == null)
                     {
-                        @Model.PetOwner.EmailAddress
+                        @Model.PetOwner.EmailAddress 
                     }
                     else
                     {
@@ -37,8 +35,9 @@
                 <td>@Model.Gender</td>
             </tr>
         </table>
-        <a class="btn btn-info" asp-area="" asp-controller="PetCenter" asp-action="Treatemnts">Treatments</a>
-        <a class="btn btn-info" asp-area="" asp-controller="PetCenter" asp-action="Tests">Tests</a>
+        <div>
+            <a class="btn btn-info" asp-area="" asp-controller="Treatments" asp-action="Index" asp-route-id=@Model.Id>Treatments</a>
+        </div>
         <div class="text-right">
             <a class="btn btn-success mt-4" asp-area="" asp-controller="PetCenter" asp-action="Index">Back to list</a>
         </div>

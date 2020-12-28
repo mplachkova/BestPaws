@@ -1,13 +1,11 @@
 ﻿@model BestPaws.Web.ViewModels.Services.ServiceInputModel
 
-@{
-    this.ViewData["Title"] = "Edit Service";
-}
+@{ this.ViewData["Title"] = "Edit Service"; }
 
 <form method="post" class="col-6 offset-3">
     <h3 class="text-info">@this.ViewData["Title"]</h3>
     <div asp-validation-summary="All"></div>
-    <div class="table-primary">
+    <div class="table">
         <label asp-for="Name"></label>
         <input asp-for="Name" class="form-control" />
         <span asp-validation-for="Name" class="text-danger"></span>
@@ -18,5 +16,8 @@
         <span asp-validation-for="Description" class="text-danger"></span>
     </div>
     <input type="hidden" asp-for="Id" />
-    <input type="submit" value="Submit" class="btn btn-outline-info" />
+    <input type="submit" value="Submit" class="btn btn-info" />
+    <div>
+        <a class="btn btn-info mt-3" asp-action="Index">Back to List</a>
+    </div>
 </form>

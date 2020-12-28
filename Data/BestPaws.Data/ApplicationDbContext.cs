@@ -140,6 +140,23 @@
                 .WithMany(p => p.PrescriptionsMedicaments)
                 .HasForeignKey(mp => mp.PrescriptionId);
             });
+
+            builder.Entity<PetsTreatments>(entity =>
+           {
+               entity.HasKey(pt => new
+               {
+                   pt.PetId,
+                   pt.TreatmentId,
+               });
+
+               entity.HasOne(pt => pt.Pet)
+               .WithMany(p => p.PetsTreatments)
+               .HasForeignKey(pt => pt.PetId);
+
+               entity.HasOne(pt => pt.Treatment)
+               .WithMany(p => p.PetsTreatments)
+               .HasForeignKey(pt => pt.TreatmentId);
+           });
         }
 
         private static void SetIsDeletedQueryFilter<T>(ModelBuilder builder)

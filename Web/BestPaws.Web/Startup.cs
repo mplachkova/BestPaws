@@ -71,6 +71,7 @@
             services.AddTransient<IDoctorService, DoctorService>();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<ISendGridMailService, SendGridMailService>();
+            services.AddTransient<ITreatmentsService, TreatmentsService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
